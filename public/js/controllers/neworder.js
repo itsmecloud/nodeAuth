@@ -10,4 +10,8 @@ angular.module('orderController', [])
 		.success(function(data) {
 			$scope.pricebooks = data;
 		});
+		$scope.onPricebookSelect =function(pb){
+			$scope.selected = true;
+			$scope.pricebook = pb;
+		}
 	}]);
