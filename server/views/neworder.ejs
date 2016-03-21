@@ -119,7 +119,7 @@
 		    <div class="slds-lookup__menu" role="listbox" id="lookup-menu" ng-show="showList">
 		      <ul class="slds-lookup__list" role="presentation" id="lookup-menu-item" ng-repeat="pb in pricebooks">
 		        <li class='slds-lookup__item' >
-					<a ng-click="selected = true;pricebook = pb;" role="option">
+					<a href="#" ng-click="$event.preventDefault();selected = true;pricebook = pb;" role="option">
 						<svg aria-hidden="true" class="slds-icon slds-icon-standard-account slds-icon--small">
 							<use xlink:href="/icons/standard-sprite/svg/symbols.svg#account"></use>
 						</svg>{{pb.name}}</a>
