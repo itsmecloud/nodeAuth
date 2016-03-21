@@ -93,7 +93,7 @@
 	      <h2 class="slds-text-heading--small slds-truncate">Price Book</h2>
 	    </div>
 	    <div class="slds-card__body slds-p-horizontal--small">
-	      	<div class="slds-lookup {{IF(selected == true ,'slds-has-selection','')}}" data-select="multi" data-scope="single" data-typeahead="true">
+	      	<div class="slds-lookup {{selected == true ?'slds-has-selection':''}}" data-select="multi" data-scope="single" data-typeahead="true">
 		    <div class="slds-form-element">
 		      <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon--right">
 		        <svg aria-hidden="true" class="slds-input__icon slds-icon-text-default" ng-hide="selected">
@@ -116,7 +116,7 @@
 		          <input type="text" class="slds-input" ng-click="showList = !showList" ng-hide="selected"/>
 		      </div>
 		    </div>
-		    <div class="slds-lookup__menu" role="listbox" id="lookup-menu" ng-show="showList">
+		    <div class="slds-lookup__menu" role="listbox" id="lookup-menu" ng-show="showList && !selected">
 		      <ul class="slds-lookup__list" role="presentation" id="lookup-menu-item" ng-repeat="pb in pricebooks">
 		        <li class='slds-lookup__item' >
 					<a href="javascript:void(0)" ng-click="$event.preventDefault();onPricebookSelect(pb);" role="option">
