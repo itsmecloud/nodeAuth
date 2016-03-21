@@ -93,18 +93,32 @@
 	      <h2 class="slds-text-heading--small slds-truncate">Price Book</h2>
 	    </div>
 	    <div class="slds-card__body slds-p-horizontal--small">
-	      	<div class="slds-lookup" data-select="multi" data-scope="single" data-typeahead="true">
+	      	<div class="slds-lookup {{IF(selected == true ,'slds-has-selection','')}}" data-select="multi" data-scope="single" data-typeahead="true">
 		    <div class="slds-form-element">
 		      <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon--right">
 		        <svg aria-hidden="true" class="slds-input__icon slds-icon-text-default">
 		          <use xlink:href="/icons/utility-sprite/svg/symbols.svg#search"></use>
 		        </svg>
-		          <input type="text" ng-model="pricebook" class="slds-input" ng-click="showList = !showList"/>
+				<div class="slds-pill_container slds-show" ng-show="selected">
+				  <a href="#void" class="slds-pill">
+					<svg aria-hidden="true" class="slds-icon slds-icon-standard-account slds-pill__icon">
+					  <use xlink:href="/icons/standard-sprite/svg/symbols.svg#account"></use>
+					</svg>
+					<span class="slds-pill__label">{{pricebook.name}}</span>
+					<button class="slds-button slds-button--icon-bare slds-pill__remove" ng-click="selected = false;pricebook = {};">
+					  <svg aria-hidden="true" class="slds-button__icon">
+						<use xlink:href="/icons/utility-sprite/svg/symbols.svg#close"></use>
+					  </svg>
+					  <span class="slds-assistive-text">Remove</span>
+					</button>
+				  </a>
+				</div>
+		          <input type="text" class="slds-input" ng-click="showList = !showList"/>
 		      </div>
 		    </div>
 		    <div class="slds-lookup__menu" role="listbox" id="lookup-menu" ng-show="showList">
 		      <ul class="slds-lookup__list" role="presentation" id="lookup-menu-item" ng-repeat="pb in pricebooks">
-		        <li class='slds-lookup__item'>
+		        <li class='slds-lookup__item' ng-click="selected = true;pricebook = pb;">
 					<a href="#" role="option"><svg aria-hidden="true" class="slds-icon slds-icon-standard-account slds-icon--small">
 						<use xlink:href="/icons/standard-sprite/svg/symbols.svg#account"></use></svg>{{pb.name}}</a>
 				</li>
