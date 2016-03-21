@@ -5,7 +5,7 @@ angular.module('orderController', [])
 		$scope.pricebook = {};
 		$scope.pricebooks = [];
 		$scope.showList = false;
-		$scope.selected = true;
+		$scope.selected = false;
 		Pricebook.get()
 		.success(function(data) {
 			$scope.pricebooks = data;
