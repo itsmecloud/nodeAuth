@@ -4,7 +4,7 @@ angular.module('orderController', [])
 	.controller('neworderController', ['$scope','$http','Pricebook', function($scope, $http, Pricebook) {
 		$scope.pricebook = null;
 		$scope.pricebooks = [];
-		
+		$scope.showList = false;
 		Pricebook.get()
 		.success(function(data) {
 			$scope.pricebooks = data;

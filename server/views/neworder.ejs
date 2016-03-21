@@ -99,17 +99,11 @@
 		        <svg aria-hidden="true" class="slds-input__icon slds-icon-text-default">
 		          <use xlink:href="/icons/utility-sprite/svg/symbols.svg#search"></use>
 		        </svg>
-		          <input type="text" ng-model="pricebook" class="slds-input" onChange="showPriceBook()"/>
+		          <input type="text" ng-model="pricebook" class="slds-input" ng-click="showList = !showList"/>
 		      </div>
 		    </div>
-		    <div class="slds-lookup__menu" role="listbox" id="lookup-menu" style="display:none">
-		      <div class="slds-lookup__item">
-		        <button class="slds-button">
-		          <svg aria-hidden="true" class="slds-icon slds-icon-text-default slds-icon--small">
-		            <use xlink:href="/icons/utility-sprite/svg/symbols.svg#search"></use>
-		          </svg>&quot;{{pricebook}}&quot; in Price Book</button>
-		      </div>
-		      <ul class="slds-lookup__list" role="presentation" id="lookup-menu-item" ng-repeat="pb in pricebooks | filter:search:pricebook">
+		    <div class="slds-lookup__menu" role="listbox" id="lookup-menu" ng-show="showList">
+		      <ul class="slds-lookup__list" role="presentation" id="lookup-menu-item" ng-repeat="pb in pricebooks">
 		        <li class='slds-lookup__item'>
 					<a href="#" role="option"><svg aria-hidden="true" class="slds-icon slds-icon-standard-account slds-icon--small">
 						<use xlink:href="/icons/standard-sprite/svg/symbols.svg#account"></use></svg>{{pb.name}}</a>
