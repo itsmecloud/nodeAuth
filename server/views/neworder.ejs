@@ -96,7 +96,7 @@
 	      	<div class="slds-lookup {{IF(selected == true ,'slds-has-selection','')}}" data-select="multi" data-scope="single" data-typeahead="true">
 		    <div class="slds-form-element">
 		      <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon--right">
-		        <svg aria-hidden="true" class="slds-input__icon slds-icon-text-default">
+		        <svg aria-hidden="true" class="slds-input__icon slds-icon-text-default" ng-hide="selected">
 		          <use xlink:href="/icons/utility-sprite/svg/symbols.svg#search"></use>
 		        </svg>
 				<div class="slds-pill_container slds-show" ng-show="selected">
@@ -113,7 +113,7 @@
 					</button>
 				  </a>
 				</div>
-		          <input type="text" class="slds-input" ng-click="showList = !showList"/>
+		          <input type="text" class="slds-input" ng-click="showList = !showList" ng-hide="selected"/>
 		      </div>
 		    </div>
 		    <div class="slds-lookup__menu" role="listbox" id="lookup-menu" ng-show="showList">
