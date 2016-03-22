@@ -1,6 +1,6 @@
 angular.module('orderController', [])
 
-	.controller('neworderController', ['$scope','$http','Pricebook','Products','Contracts', function($scope, $http, Pricebook,Products,Contracts) {
+	.controller('neworderController', ['$scope','$http','Pricebook','Products','Contracts','OrderItem', function($scope, $http, Pricebook,Products,Contracts,OrderItem) {
 		$scope.pricebook = {};
 		$scope.pricebooks = [];
 		$scope.showList = false;
