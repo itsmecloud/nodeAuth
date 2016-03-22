@@ -48,7 +48,7 @@ module.exports = function(app, passport,db,pgp) {
         res.redirect('/');
     });
     app.get('/api/products/:pbId', function(req, res) {
-        
+         var pbId = req.params.pbId;
         if(req.hasOwnProperty('user')){
         
             var loginUser = req.user;
