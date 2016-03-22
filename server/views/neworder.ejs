@@ -139,7 +139,7 @@
 	                        <div class="slds-float--right">
 	                  	 	<div class="slds-button-group" role="group">
 					  <button class="slds-button slds-button--neutral">Cancel</button>
-					  <button class="slds-button slds-button--neutral">Create</button>
+					  <button class="slds-button slds-button--neutral" ng-click="onProductSelected()">Next</button>
 					</div>
 	                  	</div>
 	                    {{products.length}} Results</th>
@@ -184,6 +184,15 @@
 	        <div class="slds-modal__content">
 	            <table class="slds-table slds-table--bordered slds-no-row-hover" role="listbox">
 	              <thead>
+	              <tr>
+	                  <th colspan="4" scope="col">
+	                        <div class="slds-float--right">
+	                  	 	<div class="slds-button-group" role="group">
+					  <button class="slds-button slds-button--neutral">Cancel</button>
+					  <button class="slds-button slds-button--neutral">Create</button>
+					</div>
+	                  	</div>
+	                </tr>
 	                <tr>
 	                  <th scope="col">Name</th>
 	                  <th scope="col">Quantity</th>
