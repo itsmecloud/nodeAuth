@@ -152,67 +152,29 @@
 	                    </div>5 Results</th>
 	                </tr>
 	                <tr>
-	                  <th scope="col">Account Name</th>
-	                  <th scope="col">Location</th>
-	                  <th scope="col">Secondary Column</th>
-	                  <th scope="col">Tertiary Column</th>
+	                  <th scope="col"></th>
+	                  <th scope="col">Name</th>
+	                  <th scope="col">Unit Price</th>
+	                  <th scope="col">Product Family</th>
+	                  <th scope="col">Description</th>
 	                </tr>
 	              </thead>
 	              <tbody>
-	                <tr>
-	                  <th scope="row">
-	                    <a id="s01" href="#" role="option">
-	                      <svg aria-hidden="true" class="slds-icon slds-icon-standard-account slds-icon--small slds-m-right--x-small">
-	                        <use xlink:href="/icons/standard-sprite/svg/symbols.svg#account"></use>
-	                      </svg>Acme Landscape</a>
+	                <tr ng-repeat="product in products">
+	                  <th>
+	                  <div class="slds-form-element">
+			    <div class="slds-form-element__control">
+			      <label class="slds-checkbox">
+			        <input type="checkbox" name="options" id="{{product.productid}}" />
+			        <span class="slds-checkbox--faux"></span>
+			      </label>
+			    </div>
+			  </div>
 	                  </th>
-	                  <td>Seattle, WA</td>
-	                  <td>Secondary Field</td>
-	                  <td>Tertiary Field</td>
-	                </tr>
-	                <tr>
-	                  <th scope="row">
-	                    <a id="s02" href="#" role="option">
-	                      <svg aria-hidden="true" class="slds-icon slds-icon-standard-account slds-icon--small slds-m-right--x-small">
-	                        <use xlink:href="/icons/standard-sprite/svg/symbols.svg#account"></use>
-	                      </svg>ACME Construction</a>
-	                  </th>
-	                  <td>San Francisco, CA</td>
-	                  <td>Secondary Field</td>
-	                  <td>Tertiary Field</td>
-	                </tr>
-	                <tr>
-	                  <th scope="row">
-	                    <a id="s03" href="#" role="option">
-	                      <svg aria-hidden="true" class="slds-icon slds-icon-standard-account slds-icon--small slds-m-right--x-small">
-	                        <use xlink:href="/icons/standard-sprite/svg/symbols.svg#account"></use>
-	                      </svg>Action Sports</a>
-	                  </th>
-	                  <td>Madison, WI</td>
-	                  <td>Secondary Field</td>
-	                  <td>Tertiary Field</td>
-	                </tr>
-	                <tr>
-	                  <th scope="row">
-	                    <a id="s04" href="#" role="option">
-	                      <svg aria-hidden="true" class="slds-icon slds-icon-standard-account slds-icon--small slds-m-right--x-small">
-	                        <use xlink:href="/icons/standard-sprite/svg/symbols.svg#account"></use>
-	                      </svg>Moderno Bistro</a>
-	                  </th>
-	                  <td>Acton, OH</td>
-	                  <td>Secondary Field</td>
-	                  <td>Tertiary Field</td>
-	                </tr>
-	                <tr>
-	                  <th scope="row">
-	                    <a id="s05" href="#" role="option">
-	                      <svg aria-hidden="true" class="slds-icon slds-icon-standard-account slds-icon--small slds-m-right--x-small">
-	                        <use xlink:href="/icons/standard-sprite/svg/symbols.svg#account"></use>
-	                      </svg>Cozy Kitchen</a>
-	                  </th>
-	                  <td>Acton, CA</td>
-	                  <td>Secondary Field</td>
-	                  <td>Tertiary Field</td>
+	                  <td>{{product.name}}</td>
+	                  <td>{{product.unitprice}}</td>
+	                  <td>{{product.family}}</td>
+	                  <td>{{product.description}}</td>
 	                </tr>
 	              </tbody>
 	            </table>
