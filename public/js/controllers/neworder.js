@@ -29,8 +29,8 @@ angular.module('orderController', [])
 		   $scope.productSelected = true;
 		   $scope.selectedPriceBookEntry = [];
 		   for(var i=0;i < $scope.products.length;i++){
-		   	if($scope.products.selected){
-		   		$scope.products.quantity = 0;
+		   	if($scope.products[i].selected){
+		   		$scope.products[i].quantity = 0;
 		   		$scope.selectedPriceBookEntry.push($scope.products);
 		   	}
 		   }
