@@ -147,7 +147,7 @@
 	                <tr>
 	                <th class="slds-cell-shrink">
 		          <label class="slds-checkbox">
-		            <input type="checkbox" name="selectAllProduct" class="selectAllProduct">
+		            <input type="checkbox" name="selectAllProduct" class="selectAllProduct" >
 		            <span class="slds-checkbox--faux"></span>
 		            <span class="slds-assistive-text">Select All</span>
 		          </label>
@@ -162,7 +162,7 @@
 	                <tr ng-repeat="product in products">
 	                <td class="slds-cell-shrink" data-label="Select Row">
 		          <label class="slds-checkbox">
-		            <input type="checkbox" name="{{product.sfid}}" class="selectrow" value="{{product.sfid}}">
+		            <input type="checkbox" name="{{product.sfid}}" class="selectrow" value="{{product.selected}}" ng-model="product.selected">
 		            <span class="slds-checkbox--faux"></span>
 		            <span class="slds-assistive-text">Select Row</span>
 		          </label>
