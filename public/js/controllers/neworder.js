@@ -13,6 +13,7 @@ angular.module('orderController', [])
 		$scope.onPricebookSelect =function(pb){
 			$scope.selected = true;
 			$scope.pricebook = pb;
+			$scope.products = [];
 			Products.get(pb.sfid)
 			.success(function(data) {
 				$scope.products = data;
