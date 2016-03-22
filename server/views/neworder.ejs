@@ -203,7 +203,7 @@
 	              <tbody>
 	                <tr ng-repeat="pricebookEntry in selectedPriceBookEntry">
 			<td>
-			    {{pricebookEntry}}
+			    {{pricebookEntry.name}}
 	                  </td>
 	                  <td><input type="number" value="{{pricebookEntry.quantity}}" ng-model="pricebookEntry.quantity"/></td>
 	                  <td>{{pricebookEntry.unitprice}}</td>
