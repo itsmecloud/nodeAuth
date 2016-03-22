@@ -15,4 +15,10 @@ angular.module('orderService', [])
 				return $http.get('/api/pricebook');
 			}
 		}
+	}]).factory('Products', ['$http',function($http) {
+		return {
+			get : function(pbId) {
+				return $http.get('/api/products?pb='+pbId);
+			}
+		}
 	}]);
