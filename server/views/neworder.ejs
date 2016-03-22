@@ -88,7 +88,7 @@
 	  </div>
 	</div>
 	</div>
-	<div class="slds-card">
+	<div class="slds-card" ng-show="!productSelected">
 	    <div class="slds-card__header slds-grid grid--flex-spread">
 	      <h2 class="slds-text-heading--small slds-truncate">Price Book</h2>
 	    </div>
@@ -130,7 +130,7 @@
 	    </div>
 	  </div>
 	  <div>
-	      <div class="slds-modal--large">
+	  <div class="slds-modal--large" ng-show="!productSelected">
 	        <div class="slds-modal__content">
 	            <table class="slds-table slds-table--bordered slds-no-row-hover" role="listbox">
 	              <thead>
@@ -139,7 +139,7 @@
 	                        <div class="slds-float--right">
 	                  	 	<div class="slds-button-group" role="group">
 					  <button class="slds-button slds-button--neutral">Cancel</button>
-					  <button class="slds-button slds-button--neutral">Next</button>
+					  <button class="slds-button slds-button--neutral">Create</button>
 					</div>
 	                  	</div>
 	                    {{products.length}} Results</th>
@@ -172,6 +172,32 @@
 	                  </td>
 	                  <td>{{product.unitprice}}</td>
 	                  <td>{{product.family}}</td>
+	                  <td>{{product.description}}</td>
+	                </tr>
+	              </tbody>
+	            </table>
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+	   <div class="slds-modal--large" ng-show="productSelected">
+	        <div class="slds-modal__content">
+	            <table class="slds-table slds-table--bordered slds-no-row-hover" role="listbox">
+	              <thead>
+	                <tr>
+	                  <th scope="col">Name</th>
+	                  <th scope="col">Quantity</th>
+	                  <th scope="col">Unit Price</th>
+	                  <th scope="col">Description</th>
+	                </tr>
+	              </thead>
+	              <tbody>
+	                <tr ng-repeat="pricebookEntry in selectedPriceBookEntry">
+			<td>
+			    {{pricebookEntry.name}}
+	                  </td>
+	                  <td><input type="number" value="{{pricebookEntry.quantity}}" ng-model="pricebookEntry.quantity"/></td>
+	                  <td>{{pricebookEntry.unitprice}}</td>
 	                  <td>{{product.description}}</td>
 	                </tr>
 	              </tbody>
