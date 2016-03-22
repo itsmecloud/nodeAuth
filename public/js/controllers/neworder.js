@@ -1,6 +1,6 @@
 angular.module('orderController', [])
 
-	.controller('neworderController', ['$scope','$http','Pricebook','Products','Contracts','OrderItem', function($scope, $http, Pricebook,Products,Contracts,OrderItem) {
+	.controller('neworderController', ['$scope','$http','Pricebook','Products','Contracts','OrderItem','Order', function($scope, $http, Pricebook,Products,Contracts,OrderItem,Order) {
 		$scope.pricebook = {};
 		$scope.pricebooks = [];
 		$scope.showList = false;
@@ -42,6 +42,22 @@ angular.module('orderController', [])
 			
 		}
 		$scope.onCreateOrder =function(){
-		   	
+			$scope.input = {};
+		   	$scope.order = {};
+			if($scope.selectedPriceBookEntry.length > 0){
+				$scope.order.pricebook2Id = $scope.selectedPriceBookEntry[0].pricebook2id;
+				$scope.order.contractId = $scope.contractId;
+			}
+			
+			$scope.orderItems =[];
+			for(var i=0;i<$scope.selectedPriceBookEntry.length;i++){
+				$scope.orderItems.push({
+					pricebookentryId : $scope.selectedPriceBookEntry[0].sfid,
+					quantity : $scope.selectedPriceBookEntry[0].quantity
+				});
+			}
+			$scope.input.order = $scope.order;
+			$scope.input.orderItems = $scope.orderItems;
+			OrderItem.post($scope.input);
 		}
 	}]);

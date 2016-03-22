@@ -19,6 +19,7 @@
     "passport-twitter": "~1.0.2",
     "pg": "^4.2.0",
     "pg-promise" : "3.3.0",
-    "bluebird": "3.x"
+    "bluebird": "3.x",
+	"jsforce" : "1.x"
   }
 }
