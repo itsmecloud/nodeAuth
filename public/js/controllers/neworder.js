@@ -1,7 +1,6 @@
 angular.module('orderController', [])
 
-	// inject the Todo service factory into our controller
-	.controller('neworderController', ['$scope','$http','Pricebook', function($scope, $http, Pricebook) {
+	.controller('neworderController', ['$scope','$http','Pricebook','Products', function($scope, $http, Pricebook,Products) {
 		$scope.pricebook = {};
 		$scope.pricebooks = [];
 		$scope.showList = false;
@@ -10,8 +9,14 @@ angular.module('orderController', [])
 		.success(function(data) {
 			$scope.pricebooks = data;
 		});
+		$scope.products = [];
 		$scope.onPricebookSelect =function(pb){
 			$scope.selected = true;
 			$scope.pricebook = pb;
+			Products.get(pb.sfid)
+			.success(function(data) {
+				$scope.products = data;
+			});		
 		}
+		
 	}]);
