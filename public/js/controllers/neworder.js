@@ -1,15 +1,20 @@
 angular.module('orderController', [])
 
-	.controller('neworderController', ['$scope','$http','Pricebook','Products', function($scope, $http, Pricebook,Products) {
+	.controller('neworderController', ['$scope','$http','Pricebook','Products','Contracts', function($scope, $http, Pricebook,Products,Contracts) {
 		$scope.pricebook = {};
 		$scope.pricebooks = [];
 		$scope.showList = false;
 		$scope.selected = false;
 		$scope.productSelected = false;
 		$scope.selectedPriceBookEntry = [];
+		$scope.contractId = undefined;
 		Pricebook.get()
 		.success(function(data) {
 			$scope.pricebooks = data;
+		});
+		Contracts.get()
+		.success(function(data) {
+			$scope.contractId = data.sfid;
 		});
 		$scope.products = [];
 		$scope.onPricebookSelect =function(pb){
@@ -36,5 +41,7 @@ angular.module('orderController', [])
 		   }
 			
 		}
-		
+		$scope.onCreateOrder =function(){
+		   	
+		}
 	}]);
