@@ -54,7 +54,7 @@ module.exports = function(app, passport,db,pgp) {
             var loginUser = req.user;
             var results = [];
             console.log(loginUser);
-		db.query("SELECT * FROM salesforce.PricebookEntry", true)
+		db.query("SELECT * FROM salesforce.product2 INNER JOIN salesforce.pricebookentry ON salesforce.product2.sfid = salesforce.pricebookentry.pricebook2id WHERE salesforce.pricebookentry.pricebook2id ='"+pbId+"'", true)
 		    .then(function (data) {
 		        console.log("DATA:", data); // print data;
 		        return res.json(data);
