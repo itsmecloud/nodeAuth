@@ -52,7 +52,7 @@ module.exports = function(app, passport,db,pgp) {
             var loginUser = req.user;
             var results = [];
             console.log(loginUser);
-		db.query("SELECT * FROM salesforce.contract WHERE accountid ='"+loginUser.accountid+"'", true)
+		db.query("SELECT * FROM salesforce.contract WHERE accountid ='"+loginUser.accountid+"'", [])
 		    .then(function (data) {
 		        console.log("DATA:", data); // print data;
 		        return res.json(data);
@@ -111,6 +111,38 @@ module.exports = function(app, passport,db,pgp) {
             return res.status(500).json({ success: false});
         }
     });
+    app.post('/api/order', function(req, res) {
+    	if(req.hasOwnProperty('user')){
+            var loginUser = req.user;
+            var results = [];
+            var data =req.body;
+		db.none("insert into order(info) values(${obj})", {
+			    obj: data
+		     })
+		    .then(function () {
+		        // success;
+		    })
+		    .catch(function (error) {
+		        // error;
+		    })
+		    .finally(function () {
+		        // If we do not close the connection pool when exiting the application,
+		        // it may take 30 seconds (poolIdleTimeout) before the process terminates,
+		        // waiting for the connection to expire in the pool.
+		
+		        // But if you normally just kill the process, then it doesn't matter.
+		
+		        pgp.end(); // for immediate app exit, closing the connection pool.
+		
+		        // See also:
+		        // https://github.com/vitaly-t/pg-promise#library-de-initialization
+		    });
+
+        }else{
+            return res.status(500).json({ success: false});
+        }
+    		
+    });
     app.get('/api/order', function(req, res) {
         
         if(req.hasOwnProperty('user')){
@@ -118,7 +150,7 @@ module.exports = function(app, passport,db,pgp) {
             var loginUser = req.user;
             var results = [];
             console.log(loginUser);
-		db.query("SELECT * FROM salesforce.order INNER JOIN salesforce.orderitem ON salesforce.order.sfid = salesforce.orderitem.orderid INNER JOIN salesforce.pricebookentry ON salesforce.orderitem.pricebookentryid = salesforce.pricebookentry.sfid WHERE accountid ='"+loginUser.accountid+"';", true)
+		db.query("SELECT * FROM salesforce.order INNER JOIN salesforce.orderitem ON salesforce.order.sfid = salesforce.orderitem.orderid INNER JOIN salesforce.pricebookentry ON salesforce.orderitem.pricebookentryid = salesforce.pricebookentry.sfid WHERE accountid ='"+loginUser.accountid+"';", [])
 		    .then(function (data) {
 		        console.log("DATA:", data); // print data;
 		        return res.json(data);
@@ -149,7 +181,7 @@ module.exports = function(app, passport,db,pgp) {
         
             var loginUser = req.user;
             var results = [];
-            db.query("SELECT * FROM salesforce.Pricebook2", true)
+            db.query("SELECT * FROM salesforce.Pricebook2", [])
 	    .then(function (data) {
 	        console.log("DATA:", data); // print data;
 	        return res.json(data);
