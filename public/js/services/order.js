@@ -18,7 +18,7 @@ angular.module('orderService', [])
 	}]).factory('Products', ['$http',function($http) {
 		return {
 			get : function(pbId) {
-				return $http.get('/api/products?pb='+pbId);
+				return $http.get('/api/products/'+pbId);
 			}
 		}
 	}]);
