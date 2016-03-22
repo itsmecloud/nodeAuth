@@ -136,23 +136,9 @@
 	              <thead>
 	                <tr>
 	                  <th colspan="4" scope="col">
-	                    <div class="slds-float--right">
-	                      <button class="slds-button slds-button--icon-bare slds-button--icon-x-small">
-	                        <svg aria-hidden="true" class="slds-button__icon">
-	                          <use xlink:href="/icons/utility-sprite/svg/symbols.svg#filterList"></use>
-	                        </svg>
-	                        <span class="slds-assistive-text">Filter List</span>
-	                      </button>
-	                      <button class="slds-button slds-button--icon-bare slds-button--icon-x-small">
-	                        <svg aria-hidden="true" class="slds-button__icon">
-	                          <use xlink:href="/icons/utility-sprite/svg/symbols.svg#sort"></use>
-	                        </svg>
-	                        <span class="slds-assistive-text">Sort</span>
-	                      </button>
-	                    </div>{{products.length}} Results</th>
+	                    {{products.length}} Results</th>
 	                </tr>
 	                <tr>
-	                  <th scope="col"></th>
 	                  <th scope="col">Name</th>
 	                  <th scope="col">Unit Price</th>
 	                  <th scope="col">Product Family</th>
@@ -169,9 +155,9 @@
 			        <span class="slds-checkbox--faux"></span>
 			      </label>
 			    </div>
+			    {{product.name}}
 			  </div>
 	                  </th>
-	                  <td>{{product.name}}</td>
 	                  <td>{{product.unitprice}}</td>
 	                  <td>{{product.family}}</td>
 	                  <td>{{product.description}}</td>
