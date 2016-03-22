@@ -135,17 +135,19 @@
 	            <table class="slds-table slds-table--bordered slds-no-row-hover" role="listbox">
 	              <thead>
 	                <tr>
-	                <div class="slds-button-group" role="group">
-			  <button class="slds-button slds-button--neutral">Cancel</button>
-			  <button class="slds-button slds-button--neutral">Next</button>
-			</div>
 	                  <th colspan="4" scope="col">
+	                        <div class="slds-float--right">
+	                  	 	<div class="slds-button-group" role="group">
+					  <button class="slds-button slds-button--neutral">Cancel</button>
+					  <button class="slds-button slds-button--neutral">Next</button>
+					</div>
+	                  	</div>
 	                    {{products.length}} Results</th>
 	                </tr>
 	                <tr>
 	                <th class="slds-cell-shrink">
 		          <label class="slds-checkbox">
-		            <input type="checkbox" name="options">
+		            <input type="checkbox" name="selectAllProduct" class="selectAllProduct">
 		            <span class="slds-checkbox--faux"></span>
 		            <span class="slds-assistive-text">Select All</span>
 		          </label>
@@ -160,7 +162,7 @@
 	                <tr ng-repeat="product in products">
 	                <td class="slds-cell-shrink" data-label="Select Row">
 		          <label class="slds-checkbox">
-		            <input type="checkbox" name="options">
+		            <input type="checkbox" name="{{product.sfid}}" class="selectrow" value="{{product.sfid}}">
 		            <span class="slds-checkbox--faux"></span>
 		            <span class="slds-assistive-text">Select Row</span>
 		          </label>
