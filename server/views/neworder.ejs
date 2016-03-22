@@ -135,10 +135,21 @@
 	            <table class="slds-table slds-table--bordered slds-no-row-hover" role="listbox">
 	              <thead>
 	                <tr>
+	                <div class="slds-button-group" role="group">
+			  <button class="slds-button slds-button--neutral">Cancel</button>
+			  <button class="slds-button slds-button--neutral">Next</button>
+			</div>
 	                  <th colspan="4" scope="col">
 	                    {{products.length}} Results</th>
 	                </tr>
 	                <tr>
+	                <th class="slds-cell-shrink">
+		          <label class="slds-checkbox">
+		            <input type="checkbox" name="options">
+		            <span class="slds-checkbox--faux"></span>
+		            <span class="slds-assistive-text">Select All</span>
+		          </label>
+		        </th>
 	                  <th scope="col">Name</th>
 	                  <th scope="col">Unit Price</th>
 	                  <th scope="col">Product Family</th>
@@ -147,17 +158,16 @@
 	              </thead>
 	              <tbody>
 	                <tr ng-repeat="product in products">
-	                  <th>
-	                  <div class="slds-form-element">
-			    <div class="slds-form-element__control">
-			      <label class="slds-checkbox">
-			        <input type="checkbox" name="options" id="{{product.productid}}" />
-			        <span class="slds-checkbox--faux"></span>
-			      </label>
-			    </div>
+	                <td class="slds-cell-shrink" data-label="Select Row">
+		          <label class="slds-checkbox">
+		            <input type="checkbox" name="options">
+		            <span class="slds-checkbox--faux"></span>
+		            <span class="slds-assistive-text">Select Row</span>
+		          </label>
+		        </td>
+			<td>
 			    {{product.name}}
-			  </div>
-	                  </th>
+	                  </td>
 	                  <td>{{product.unitprice}}</td>
 	                  <td>{{product.family}}</td>
 	                  <td>{{product.description}}</td>
