@@ -7,6 +7,15 @@ angular.module('orderService', [])
 			get : function() {
 				return $http.get('/api/order');
 			}
+			post : function() {
+				return $http.post('/api/order');
+			}
+		}
+	}]).factory('Contracts', ['$http',function($http) {
+		return {
+			get : function() {
+				return $http.get('/api/contracts');
+			}
 		}
 	}])
 	.factory('Pricebook', ['$http',function($http) {
