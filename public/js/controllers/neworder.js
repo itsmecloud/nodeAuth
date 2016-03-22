@@ -5,6 +5,8 @@ angular.module('orderController', [])
 		$scope.pricebooks = [];
 		$scope.showList = false;
 		$scope.selected = false;
+		$scope.productSelected = false;
+		$scope.selectedPriceBookEntry = [];
 		Pricebook.get()
 		.success(function(data) {
 			$scope.pricebooks = data;
@@ -16,8 +18,23 @@ angular.module('orderController', [])
 			$scope.products = [];
 			Products.get(pb.sfid)
 			.success(function(data) {
+				for(var i=0;i< data.length;i++){
+					data[i].selected = false;
+				}
 				$scope.products = data;
+				
 			});		
+		}
+		$scope.onProductSelected =function(pb){
+		   $scope.productSelected = true;
+		   $scope.selectedPriceBookEntry = [];
+		   for(var i=0;i < $scope.products.length;i++){
+		   	if($scope.products.selected){
+		   		$scope.products.quantity = 0;
+		   		$scope.selectedPriceBookEntry.push($scope.products);
+		   	}
+		   }
+			
 		}
 		
 	}]);
