@@ -111,14 +111,13 @@ module.exports = function(app, passport,db,pgp) {
             return res.status(500).json({ success: false});
         }
     });
-    app.post('/api/order', function(req, res) {
+    app.post('/api/orderitem', function(req, res) {
     	if(req.hasOwnProperty('user')){
             var loginUser = req.user;
             var results = [];
             var data =req.body;
-		db.none("insert into order(info) values(${obj})", {
-			    obj: data
-		     })
+              for(var i=0;i<data.length;i++){
+		db.none("insert into orderitem(info) values(${this})",data[i])
 		    .then(function () {
 		        // success;
 		    })
@@ -137,7 +136,36 @@ module.exports = function(app, passport,db,pgp) {
 		        // See also:
 		        // https://github.com/vitaly-t/pg-promise#library-de-initialization
 		    });
-
+              }
+        }else{
+            return res.status(500).json({ success: false});
+        }
+    		
+    });
+    app.post('/api/order', function(req, res) {
+    	if(req.hasOwnProperty('user')){
+            var loginUser = req.user;
+            var results = [];
+            var data =req.body;
+		db.none("insert into order(info) values(${this})",data)
+		    .then(function () {
+		        // success;
+		    })
+		    .catch(function (error) {
+		        // error;
+		    })
+		    .finally(function () {
+		        // If we do not close the connection pool when exiting the application,
+		        // it may take 30 seconds (poolIdleTimeout) before the process terminates,
+		        // waiting for the connection to expire in the pool.
+		
+		        // But if you normally just kill the process, then it doesn't matter.
+		
+		        pgp.end(); // for immediate app exit, closing the connection pool.
+		
+		        // See also:
+		        // https://github.com/vitaly-t/pg-promise#library-de-initialization
+		});
         }else{
             return res.status(500).json({ success: false});
         }
