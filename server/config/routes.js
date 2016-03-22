@@ -60,7 +60,7 @@ module.exports = function(app, passport,db,pgp) {
 		        return res.json(data);
 		    })
 		    .catch(function (err) {
-		        console.log("ERROR:", error); // print the error;
+		        console.log("ERROR:", err); // print the error;
 		        return res.status(500).json({ success: false,error : err});
 		    })
 		    .finally(function () {
@@ -93,7 +93,7 @@ module.exports = function(app, passport,db,pgp) {
 		        return res.json(data);
 		    })
 		    .catch(function (err) {
-		        console.log("ERROR:", error); // print the error;
+		        console.log("ERROR:", err); // print the error;
 		        return res.status(500).json({ success: false,error : err});
 		    })
 		    .finally(function () {
@@ -124,7 +124,7 @@ module.exports = function(app, passport,db,pgp) {
 	        return res.json(data);
 	    })
 	    .catch(function (err) {
-	        console.log("ERROR:", error); // print the error;
+	        console.log("ERROR:", err); // print the error;
 	        return res.status(500).json({ success: false,error : err});
 	    })
 	    .finally(function () {
