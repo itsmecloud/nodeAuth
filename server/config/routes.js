@@ -47,6 +47,37 @@ module.exports = function(app, passport,db,pgp) {
         req.logout();
         res.redirect('/');
     });
+    app.get('/api/contracts', function(req, res) {
+        if(req.hasOwnProperty('user')){
+            var loginUser = req.user;
+            var results = [];
+            console.log(loginUser);
+		db.query("SELECT * FROM salesforce.contract WHERE accountid ='"+loginUser.accountid+"'", true)
+		    .then(function (data) {
+		        console.log("DATA:", data); // print data;
+		        return res.json(data);
+		    })
+		    .catch(function (err) {
+		        console.log("ERROR:", err); // print the error;
+		        return res.status(500).json({ success: false,error : err});
+		    })
+		    .finally(function () {
+		        // If we do not close the connection pool when exiting the application,
+		        // it may take 30 seconds (poolIdleTimeout) before the process terminates,
+		        // waiting for the connection to expire in the pool.
+		
+		        // But if you normally just kill the process, then it doesn't matter.
+		
+		        pgp.end(); // for immediate app exit, closing the connection pool.
+		
+		        // See also:
+		        // https://github.com/vitaly-t/pg-promise#library-de-initialization
+		    });
+
+        }else{
+            return res.status(500).json({ success: false});
+        }
+    });
     app.get('/api/products/:pbId', function(req, res) {
          var pbId = req.params.pbId;
         if(req.hasOwnProperty('user')){
