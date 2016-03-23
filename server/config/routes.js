@@ -58,7 +58,6 @@ module.exports = function(app, passport,db,pgp) {
             console.log(loginUser);
 		db.query("SELECT * FROM salesforce.contract WHERE accountid ='"+loginUser.accountid+"'", [])
 		    .then(function (data) {
-		        console.log("DATA:", data); // print data;
 		        return res.json(data);
 		    })
 		    .catch(function (err) {
@@ -91,7 +90,6 @@ module.exports = function(app, passport,db,pgp) {
             console.log(loginUser);
 		db.query("SELECT * FROM salesforce.product2 INNER JOIN salesforce.pricebookentry ON salesforce.product2.sfid = salesforce.pricebookentry.product2id WHERE salesforce.pricebookentry.pricebook2id ='"+pbId+"'", true)
 		    .then(function (data) {
-		        console.log("DATA:", data); // print data;
 		        return res.json(data);
 		    })
 		    .catch(function (err) {
@@ -161,7 +159,6 @@ module.exports = function(app, passport,db,pgp) {
             console.log(loginUser);
 		db.query("SELECT * FROM salesforce.order INNER JOIN salesforce.orderitem ON salesforce.order.sfid = salesforce.orderitem.orderid INNER JOIN salesforce.pricebookentry ON salesforce.orderitem.pricebookentryid = salesforce.pricebookentry.sfid WHERE accountid ='"+loginUser.accountid+"';", [])
 		    .then(function (data) {
-		        console.log("DATA:", data); // print data;
 		        return res.json(data);
 		    })
 		    .catch(function (err) {
@@ -192,7 +189,6 @@ module.exports = function(app, passport,db,pgp) {
             var results = [];
             db.query("SELECT * FROM salesforce.Pricebook2", [])
 	    .then(function (data) {
-	        console.log("DATA:", data); // print data;
 	        return res.json(data);
 	    })
 	    .catch(function (err) {

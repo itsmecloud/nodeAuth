@@ -21,7 +21,6 @@ User.findOne = function(email, callback){
 	//    }
 	db.query("SELECT * from salesforce.contact where email='"+email+"'", true)
 	    .then(function (data) {
-	        console.log("DATA:", data); // print data;
 	        if (data.length < 0){
 		    isNotAvailable = true; // update the user for return in callback
 		    ///email = email;
@@ -56,7 +55,6 @@ User.findBysfid = function(sfid, callback){
 	console.log("we are in findbyid");
 	db.query("SELECT * from salesforce.contact where sfid='"+sfid+"'", true)
 	    .then(function (data) {
-	        console.log("DATA:", data); // print data;
 	        if (data.length > 0){
 		    console.log(data[0] + ' is found!');
 		    var user = new User();
