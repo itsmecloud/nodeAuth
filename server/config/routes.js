@@ -122,7 +122,7 @@ module.exports = function(app, passport,db,pgp) {
 			var order = data.order;
 			var orderItems = data.orderItems;
 			order.AccountId = loginUser.accountId;
-			conn.login('rkosalairama@csc.com.retaildev', '$KS726kosal', function(err, res) {
+			conn.login('rkosalairama@csc.com.retaildev', '$KS726kosaluWE4MMx6gIh9GUVY22Xv7YcQn', function(err, res) {
 			  if (err) { return console.error(err); }
 			  // Single record creation
 				conn.sobject("Order").create(order, function(err, ret) {
