@@ -118,7 +118,6 @@ module.exports = function(app, passport,db,pgp) {
             var loginUser = req.user;
             var results = [];
             var data =req.body;
-			var conn = new jsforce.Connection();
 			var order = data.order;
 			var orderItems = data.orderItems;
 			order.AccountId = loginUser.accountId;
