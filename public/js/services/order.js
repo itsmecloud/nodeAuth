@@ -6,15 +6,9 @@ angular.module('orderService', [])
 		return {
 			get : function() {
 				return $http.get('/api/order');
-			},
-			post : function(data) {
-				var input = $.param({
-            					json: JSON.stringify(data)
-				});
-				return $http.post('/api/order',input);
 			}
 		}
-	}])..factory('OrderItem', ['$http',function($http) {
+	}]).factory('OrderItem', ['$http',function($http) {
 		return {
 			post : function(data) {
 				var input = $.param({
