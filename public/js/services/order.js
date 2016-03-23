@@ -6,7 +6,7 @@ angular.module('orderService', [])
 		return {
 			get : function() {
 				return $http.get('/api/order');
-			}
+			},
 			post : function(data) {
 				var input = $.param({
             					json: JSON.stringify(data)
