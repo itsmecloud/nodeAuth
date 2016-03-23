@@ -14,7 +14,7 @@ angular.module('orderService', [])
 				var input = $.param({
             					json: JSON.stringify(data)
 				});
-				return $http.post('/api/orderitem',input);
+				return $http.post('/api/orderitem',JSON.stringify(data));
 			}
 		}
 	}]).factory('Contracts', ['$http',function($http) {
