@@ -1,6 +1,10 @@
+var jsforce = require('jsforce');
+var conn = new jsforce.Connection({
+  // you can change loginUrl to connect to sandbox or prerelease env.
+  loginUrl : 'https://test.salesforce.com'
+});
 //all the routes for our application
 module.exports = function(app, passport,db,pgp) {
-	var jsforce = require('jsforce');
     // =====================================
     // HOME PAGE (with login links) ========
     // =====================================
@@ -120,7 +124,7 @@ module.exports = function(app, passport,db,pgp) {
 			var order = data.order;
 			var orderItems = data.orderItems;
 			order.AccountId = loginUser.accountId;
-			conn.login('username@domain.com', 'password', function(err, res) {
+			conn.login('rkosalairama@csc.com.retaildev', '$KS726kosal', function(err, res) {
 			  if (err) { return console.error(err); }
 			  // Single record creation
 				conn.sobject("Order").create(order, function(err, ret) {
