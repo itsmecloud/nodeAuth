@@ -43,18 +43,17 @@ module.exports = function(app, passport,db,pgp) {
     app.get('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
 
     // handle the callback after facebook has authenticated the user
-    app.get('/auth/facebook/callback',
-        passport.authenticate('facebook', function(err, user, info) {
+	app.get('/auth/facebook/callback', function(req, res, next) {
+	  passport.authenticate('facebook', function(err, user, info) {
 			if (err) { return next(err); }
 			if (user.length > 0 ) { 
 				return res.redirect('/orders'); 
 			}else{
 				return res.redirect('/');
 			}
-		  }));
-
-
-// =====================================
+		  })(req, res, next);
+	});
+	// =====================================
     // LOGOUT ==============================
     // =====================================
     app.get('/logout', function(req, res) {
