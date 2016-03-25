@@ -23,135 +23,145 @@
 <!-- SET THE CONTROLLER AND GET ALL TODOS -->
 <body ng-controller="vieworderController">
     <div class="slds-page-header" role="banner">
-	  <div class="slds-media">
-	    <!--<div class="slds-media__figure">
-	      <svg aria-hidden="true" class="slds-icon slds-icon--large slds-icon-standard-opportunity">
-	        <use xlink:href="/icons/standard-sprite/svg/symbols.svg#opportunity"></use>
-	      </svg>
-	    </div>-->
-	    <div class="slds-media__body">
-	      <p class="slds-page-header__title slds-truncate slds-align-middle" title="Order Management">Order Management</p>
-	      <p class="slds-text-body--small slds-page-header__info">Custom Application</p>
-	    </div>
-	    <div class="slds-dropdown-trigger slds-dropdown-trigger--click slds-is-open" aria-expanded="true" ng-click="showNavMenu = !showNavMenu">
-	    <button class="slds-button slds-button--icon-border-filled" aria-haspopup="true">
-	      <svg aria-hidden="true" class="slds-button__icon slds-button__icon--hint">
-	        <use xlink:href="/icons/utility-sprite/svg/symbols.svg#settings"></use>
-	      </svg>
-	      <span class="slds-assistive-text">Settings</span>
-	    </button>
-	    <div class="slds-dropdown slds-dropdown--right slds-text-heading--label" ng-show="showNavMenu">
-	      <ul class="dropdown__list" role="menu">
-	        <li class="slds-dropdown__item">
-	          <a href="/logout" role="menuitem">
-	            <p class="slds-truncate">
-	              <svg aria-hidden="true" class="slds-icon slds-icon--small slds-icon-standard-product slds-m-right--small">
-	                <use xlink:href="/icons/standard-sprite/svg/symbols.svg#product"></use>
-	              </svg>Logout</p>
-	          </a>
-	        </li>
-	      </ul>
-	    </div>
-	  </div>
-	</div>
-	</div>
-	 <div class="slds-page-header" role="banner">
-  <div class="slds-grid" >
-    <div class="slds-col slds-has-flexi-truncate">
-      <div class="slds-media">
-        <div class="slds-media__figure">
-          <svg aria-hidden="true" class="slds-icon slds-icon--large slds-icon-standard-user">
-            <use xlink:href="/icons/standard-sprite/svg/symbols.svg#user"></use>
-          </svg>
-        </div>
-        <div class="slds-media__body">
-          <p class="slds-text-heading--label">Order</p>
-          <div class="slds-grid">
-            <h1 class="slds-page-header__title slds-m-right--small slds-truncate slds-align-middle" title="Record Title">Order <%=data.OrderNumber %></h1>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="slds-col slds-no-flex slds-align-bottom">
-      <div class="slds-button-group" role="group">
-        <button class="slds-button slds-button--neutral">Edit</button>
-        <button class="slds-button slds-button--neutral">Delete</button>
-      </div>
-    </div>
-  </div>
-  <div class="slds-grid slds-page-header__detail-row">
-    <div class="slds-col--padded slds-size--1-of-4">
-      <dl>
-        <dt>
-          <p class="slds-text-heading--label slds-truncate" title="Field 1">Order Number</p>
-        </dt>
-        <dd>
-          <p class="slds-text-body--regular slds-truncate" ><%=data.OrderNumber %></p>
-        </dd>
-      </dl>
-    </div>
-    <div class="slds-col--padded slds-size--1-of-4">
-       <dl>
-        <dt>
-          <p class="slds-text-heading--label slds-truncate" title="Field 1">Status</p>
-        </dt>
-        <dd>
-          <p class="slds-text-body--regular slds-truncate" ><%=data.Status %></p>
-        </dd>
-      </dl>
-    </div>
-    <div class="slds-col--padded slds-size--1-of-4">
-      <dl>
-        <dt>
-          <p class="slds-text-heading--label slds-truncate" title="Field 1">TotalAmount</p>
-        </dt>
-        <dd>
-          <p class="slds-text-body--regular slds-truncate" ><%=data.TotalAmount %></p>
-        </dd>
-      </dl>
-    </div>
-    <div class="slds-col--padded slds-size--1-of-4">
-      <dl>
-        <dt>
-          <p class="slds-text-heading--label slds-truncate" title="Field 1">Order Date</p>
-        </dt>
-        <dd>
-          <p class="slds-text-body--regular slds-truncate" ><%=data.EffectiveDate %></p>
-        </dd>
-      </dl>
-    </div>
-  </div>
-</div>
-<div class="slds-page-header" role="banner">
-  <div class="slds-media">
-    <div class="slds-media__body">
-      <p class="slds-page-header__title slds-truncate slds-align-middle">Order Product</p>
-    </div>
-  </div>
-</div>
-<ul class="slds-list--vertical slds-has-cards--space has-selections">
-	<% for(var i=0; i<data.OrderItems.records.length; i++) {%>	
-		<li class="slds-list__item">
-		  <div class="slds-tile slds-tile--board">
-		  <span class="slds-icon_container slds-icon-standard-case">
-			  <svg aria-hidden="true" class="slds-icon">
-				<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/icons/standard-sprite/svg/symbols.svg#case"></use>
+		  <div class="slds-media">
+			<!--<div class="slds-media__figure">
+			  <svg aria-hidden="true" class="slds-icon slds-icon--large slds-icon-standard-opportunity">
+				<use xlink:href="/icons/standard-sprite/svg/symbols.svg#opportunity"></use>
 			  </svg>
-			  <span class="slds-assistive-text">Case icon</span>
-			</span>
-			<p class="slds-tile__title slds-truncate">
-			  <a href="javascript:void(0)"><%=data.OrderItems.records[i].PricebookEntry.Product2.Name %></a>
-			</p>
-			<div class="slds-tile__detail">
-			  <p class="slds-text-heading--medium">$<%=data.OrderItems.records[i].ListPrice %></p>
-			  <p class="slds-truncate">
-				<%=data.OrderItems.records[i].Description %>
-			  </p>
-			  <p class="slds-truncate"><%=data.OrderItems.records[i].Quantity %></p>
+			</div>-->
+			<div class="slds-media__body">
+			  <p class="slds-page-header__title slds-truncate slds-align-middle" title="Order Management">Order Management</p>
+			  <p class="slds-text-body--small slds-page-header__info">Custom Application</p>
+			</div>
+			<div class="slds-dropdown-trigger slds-dropdown-trigger--click slds-is-open" aria-expanded="true" ng-click="showNavMenu = !showNavMenu">
+			<button class="slds-button slds-button--icon-border-filled" aria-haspopup="true">
+			  <svg aria-hidden="true" class="slds-button__icon slds-button__icon--hint">
+				<use xlink:href="/icons/utility-sprite/svg/symbols.svg#settings"></use>
+			  </svg>
+			  <span class="slds-assistive-text">Settings</span>
+			</button>
+			<div class="slds-dropdown slds-dropdown--right slds-text-heading--label" ng-show="showNavMenu">
+			  <ul class="dropdown__list" role="menu">
+				<li class="slds-dropdown__item">
+				  <a href="/logout" role="menuitem">
+					<p class="slds-truncate">
+					  <svg aria-hidden="true" class="slds-icon slds-icon--small slds-icon-standard-product slds-m-right--small">
+						<use xlink:href="/icons/standard-sprite/svg/symbols.svg#product"></use>
+					  </svg>Logout</p>
+				  </a>
+				</li>
+			  </ul>
 			</div>
 		  </div>
-		</li>
-	<% } %>
-  </ul>
+		</div>
+		</div>
+		 <div class="slds-page-header" role="banner">
+	  <div class="slds-grid" >
+		<div class="slds-col slds-has-flexi-truncate">
+		  <div class="slds-media">
+			<div class="slds-media__figure">
+			  <svg aria-hidden="true" class="slds-icon slds-icon--large slds-icon-standard-user">
+				<use xlink:href="/icons/standard-sprite/svg/symbols.svg#user"></use>
+			  </svg>
+			</div>
+			<div class="slds-media__body">
+			  <p class="slds-text-heading--label">Order</p>
+			  <div class="slds-grid">
+				<h1 class="slds-page-header__title slds-m-right--small slds-truncate slds-align-middle" title="Record Title">Order <%=data.OrderNumber %></h1>
+			  </div>
+			</div>
+		  </div>
+		</div>
+		<div class="slds-col slds-no-flex slds-align-bottom">
+		  <div class="slds-button-group" role="group">
+			<button class="slds-button slds-button--neutral">Edit</button>
+			<button class="slds-button slds-button--neutral">Delete</button>
+		  </div>
+		</div>
+	  </div>
+	  <div class="slds-grid slds-page-header__detail-row">
+		<div class="slds-col--padded slds-size--1-of-4">
+		  <dl>
+			<dt>
+			  <p class="slds-text-heading--label slds-truncate" title="Field 1">Order Number</p>
+			</dt>
+			<dd>
+			  <p class="slds-text-body--regular slds-truncate" ><%=data.OrderNumber %></p>
+			</dd>
+		  </dl>
+		</div>
+		<div class="slds-col--padded slds-size--1-of-4">
+		   <dl>
+			<dt>
+			  <p class="slds-text-heading--label slds-truncate" title="Field 1">Status</p>
+			</dt>
+			<dd>
+			  <p class="slds-text-body--regular slds-truncate" ><%=data.Status %></p>
+			</dd>
+		  </dl>
+		</div>
+		<div class="slds-col--padded slds-size--1-of-4">
+		  <dl>
+			<dt>
+			  <p class="slds-text-heading--label slds-truncate" title="Field 1">TotalAmount</p>
+			</dt>
+			<dd>
+			  <p class="slds-text-body--regular slds-truncate" ><%=data.TotalAmount %></p>
+			</dd>
+		  </dl>
+		</div>
+		<div class="slds-col--padded slds-size--1-of-4">
+		  <dl>
+			<dt>
+			  <p class="slds-text-heading--label slds-truncate" title="Field 1">Order Date</p>
+			</dt>
+			<dd>
+			  <p class="slds-text-body--regular slds-truncate" ><%=data.EffectiveDate %></p>
+			</dd>
+		  </dl>
+		</div>
+	  </div>
+	</div>
+	<div class="slds-card">
+		<div class="slds-card__header slds-grid">
+		  <div class="slds-media slds-media--center slds-has-flexi-truncate">
+			<div class="slds-media__figure">
+			  <svg aria-hidden="true" class="slds-icon slds-icon-standard-contact slds-icon--small">
+				<use xlink:href="/icons/standard-sprite/svg/symbols.svg#contact"></use>
+			  </svg>
+			</div>
+			<div class="slds-media__body">
+			  <h2 class="slds-text-heading--small slds-truncate">Order Product</h2>
+			</div>
+		  </div>
+		  <div class="slds-no-flex">
+			<div class="slds-button-group">
+			  <button class="slds-button slds-button--neutral slds-button--small">Edit All</button>
+			</div>
+		  </div>
+		</div>
+		<div class="slds-card__body">
+		  <table class="slds-table slds-table--bordered slds-max-medium-table--stacked-horizontal slds-no-row-hover">
+			<thead>
+			  <tr>
+				<th class="slds-text-heading--label slds-size--1-of-4" scope="col">Name</th>
+				<th class="slds-text-heading--label slds-size--1-of-4" scope="col">Description</th>
+				<th class="slds-text-heading--label slds-size--1-of-4" scope="col">Quantity</th>
+				<th class="slds-text-heading--label slds-size--1-of-4" scope="col">ListPrice</th>
+			  </tr>
+			</thead>
+			<tbody>
+			<% for(var i=0; i<data.OrderItems.records.length; i++) {%>	
+			  <tr class="slds-hint-parent">
+				<td class="slds-size--1-of-4" ><%=data.OrderItems.records[i].PricebookEntry.Product2.Name %></td>
+				<td class="slds-size--1-of-4" ><%=data.OrderItems.records[i].Description %></td>
+				<td class="slds-size--1-of-4" ><%=data.OrderItems.records[i].Quantity %></td>
+				<td class="slds-size--1-of-4" >$<%=data.OrderItems.records[i].ListPrice %></td>
+			  </tr>
+			<% } %>
+			</tbody>
+		  </table>
+		</div>
+	</div>
 </body>
 </html>
