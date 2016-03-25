@@ -115,7 +115,7 @@ module.exports = function(app, passport,db,pgp) {
 		}else{
 			return res.redirect('/orders');
 		}
-	}
+	});
     app.get('/api/products/:pbId', function(req, res) {
          var pbId = req.params.pbId;
         if(req.hasOwnProperty('user')){
