@@ -20,7 +20,7 @@ module.exports = function(passport,db,pgp) {
 		if(user.length > 0)
 			done(null, user[0].sfid);
 		else
-			done(null, false);
+			done(null, 'nouser');
 
     });
 
