@@ -133,7 +133,7 @@
 	            <td class="slds-size--1-of-4" >{{order.Status}}</td>
 	            <td class="slds-size--1-of-4" >{{order.EffectiveDate}}</td>
 	            <td class="slds-size--1-of-4" >
-	            		<span class="slds-badge slds-theme--inverse" ng-repeat="orderItem in order.OrderItems.records">{{orderItem.name}}</span>
+	            		<span class="slds-badge slds-theme--inverse" ng-repeat="orderItem in order.OrderItems.records">{{orderItem.PricebookEntry.Product2.Name}}</span>
 	            </td>
 	            <td>
 	              <button class="slds-button slds-button--icon-border-filled slds-button--icon-x-small">
