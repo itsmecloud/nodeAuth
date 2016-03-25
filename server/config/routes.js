@@ -1,3 +1,4 @@
+var jsforce = require('jsforce');
 // Salesforce OAuth2 client information
 var oauth2 = new jsforce.OAuth2({
     clientId: process.env.Consumer_Key,
