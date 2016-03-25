@@ -45,7 +45,7 @@ module.exports = function(app, passport,db,pgp) {
     // handle the callback after facebook has authenticated the user
     app.get('/auth/facebook/callback',
         passport.authenticate('facebook', {
-            successRedirect : '/oauth/auth',
+            successRedirect : '/profile',
             failureRedirect : '/'
         }));
 
@@ -128,7 +128,7 @@ module.exports = function(app, passport,db,pgp) {
 			var order = data.order;
 			var orderItems = data.orderItems;
 			order.AccountId = loginUser.accountId;
-			conn.login('rkosalairama@csc.com.retaildev', '$KS726kosal', function(err, userInfo) {
+			conn.login('rkosalairama@csc.com.retaildev', '$KS726kosaluWE4MMx6gIh9GUVY22Xv7YcQn', function(err, userInfo) {
 			  if (err) { return console.error(err); }
 			  // Now you can get the access token and instance URL information.
 			  // Save them to establish connection next time.
