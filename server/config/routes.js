@@ -1,7 +1,8 @@
-var jsforce = require('jsforce');
-var conn = new jsforce.Connection({
-  // you can change loginUrl to connect to sandbox or prerelease env.
-  loginUrl : 'https://test.salesforce.com'
+// Salesforce OAuth2 client information
+var oauth2 = new jsforce.OAuth2({
+    clientId: process.env.Consumer_Key,
+    clientSecret:  process.env.Consumer_Secret,
+    redirectUri: process.env.Callback_URL,
 });
 //all the routes for our application
 module.exports = function(app, passport,db,pgp) {
@@ -11,7 +12,28 @@ module.exports = function(app, passport,db,pgp) {
     app.get('/', function(req, res) {
         res.render('index.ejs'); // load the index.ejs file
     });
-    
+    /* SF OAuth request, redirect to SF login */
+	app.get('/oauth/auth', function(req, res) {
+		res.redirect(oauth2.getAuthorizationUrl({scope: 'api id web'}));
+	});
+
+	/* OAuth callback from SF, pass received auth code and get access token */
+	app.get('/oauth/callback', function(req, res) {
+		var conn = new jsforce.Connection({oauth2: oauth2});
+		var code = req.query.code;
+		conn.authorize(code, function(err, userInfo) {
+			if (err) { return console.error(err); }
+
+			console.log('Access Token: ' + conn.accessToken);
+			console.log('Instance URL: ' + conn.instanceUrl);
+			console.log('User ID: ' + userInfo.id);
+			console.log('Org ID: ' + userInfo.organizationId);
+
+			req.session.accessToken = conn.accessToken;
+			req.session.instanceUrl = conn.instanceUrl;
+			res.redirect('/profile');
+		});
+	});
     //app.get('/api', './routes/api.js');
     // =====================================
     // PROFILE SECTION =====================
@@ -39,7 +61,7 @@ module.exports = function(app, passport,db,pgp) {
     // handle the callback after facebook has authenticated the user
     app.get('/auth/facebook/callback',
         passport.authenticate('facebook', {
-            successRedirect : '/profile',
+            successRedirect : '/oauth/auth',
             failureRedirect : '/'
         }));
 
@@ -113,7 +135,8 @@ module.exports = function(app, passport,db,pgp) {
             return res.status(500).json({ success: false});
         }
     });
-    app.post('/api/orderitem', function(req, res) {
+    
+	app.post('/api/orderitem', function(req, res) {
     	if(req.hasOwnProperty('user')){
             var loginUser = req.user;
             var results = [];
