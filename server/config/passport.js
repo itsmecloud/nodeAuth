@@ -53,13 +53,13 @@ module.exports = function(passport,db,pgp) {
                     // if there is an error, stop everything and return that
                     // ie an error connecting to the database
                     if (err)
-                        return done(err);
+                        return done(err,false);
 
                     // if the user is found, then log them in
                     if (!isNotAvailable) {
                         return done(null, user); // user found, return that user
                     } else {
-                         return done(null); // user found, return that user
+                        return done(null, false);// user found, return that user
                     }
 
                 });
