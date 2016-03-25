@@ -36,7 +36,7 @@
 	    <div class="slds-dropdown-trigger slds-dropdown-trigger--click slds-is-open" aria-expanded="true" ng-click="showNavMenu = !showNavMenu">
 	    <button class="slds-button slds-button--icon-border-filled" aria-haspopup="true">
 	      <svg aria-hidden="true" class="slds-button__icon slds-button__icon--hint">
-	        <use xlink:href="icons/utility-sprite/svg/symbols.svg#settings"></use>
+	        <use xlink:href="./icons/utility-sprite/svg/symbols.svg#settings"></use>
 	      </svg>
 	      <span class="slds-assistive-text">Settings</span>
 	    </button>
@@ -46,7 +46,7 @@
 	          <a href="/logout" role="menuitem">
 	            <p class="slds-truncate">
 	              <svg aria-hidden="true" class="slds-icon slds-icon--small slds-icon-standard-product slds-m-right--small">
-	                <use xlink:href="icons/standard-sprite/svg/symbols.svg#product"></use>
+	                <use xlink:href="./icons/standard-sprite/svg/symbols.svg#product"></use>
 	              </svg>Logout</p>
 	          </a>
 	        </li>
@@ -122,5 +122,23 @@
     </div>
   </div>
 </div>
+<ul class="slds-list--vertical slds-has-cards--space has-selections">
+	<% for(var i=0; i<data.OrderItems; i++) {%>	
+		<li class="slds-list__item">
+		  <div class="slds-tile slds-tile--board">
+			<p class="slds-tile__title slds-truncate">
+			  <a href="javascript:void(0)"><%=data.OrderItems[i].PricebookEntry.Product2.Name %></a>
+			</p>
+			<div class="slds-tile__detail">
+			  <p class="slds-text-heading--medium">$<%=data.OrderItems[i].ListPrice %></p>
+			  <p class="slds-truncate">
+				<%=data.OrderItems[i].Description %>
+			  </p>
+			  <p class="slds-truncate"><%=data.OrderItems[i].Quantity %></p>
+			</div>
+		  </div>
+		</li>
+	<% } %>
+  </ul>
 </body>
 </html>
