@@ -138,7 +138,7 @@ module.exports = function(app, passport,db,pgp) {
 			  console.log("User ID: " + userInfo.id);
 			  console.log("Org ID: " + userInfo.organizationId);
 			  // Single record creation
-			  console.log("Order Id"+order);
+			  console.log("Order Id",order);
 				conn.sobject("Order").create(order, function(err, ret) {
 				  if (err || !ret.success) { return console.error(err, ret); }
 				  console.log("Created record id : " + ret.id);
