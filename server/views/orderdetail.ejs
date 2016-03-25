@@ -123,18 +123,18 @@
   </div>
 </div>
 <ul class="slds-list--vertical slds-has-cards--space has-selections">
-	<% for(var i=0; i<data.OrderItems.length; i++) {%>	
+	<% for(var i=0; i<data.OrderItems.records.length; i++) {%>	
 		<li class="slds-list__item">
 		  <div class="slds-tile slds-tile--board">
 			<p class="slds-tile__title slds-truncate">
-			  <a href="javascript:void(0)"><%=data.OrderItems[i].PricebookEntry.Product2.Name %></a>
+			  <a href="javascript:void(0)"><%=data.OrderItems.records[i].PricebookEntry.Product2.Name %></a>
 			</p>
 			<div class="slds-tile__detail">
-			  <p class="slds-text-heading--medium">$<%=data.OrderItems[i].ListPrice %></p>
+			  <p class="slds-text-heading--medium">$<%=data.OrderItems.records[i].ListPrice %></p>
 			  <p class="slds-truncate">
-				<%=data.OrderItems[i].Description %>
+				<%=data.OrderItems.records[i].Description %>
 			  </p>
-			  <p class="slds-truncate"><%=data.OrderItems[i].Quantity %></p>
+			  <p class="slds-truncate"><%=data.OrderItems.records[i].Quantity %></p>
 			</div>
 		  </div>
 		</li>
