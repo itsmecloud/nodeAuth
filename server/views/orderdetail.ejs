@@ -16,12 +16,11 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><!-- load jquery -->
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script><!-- load angular -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-    <script src="/js/controllers/main.js"></script> <!-- load up our controller -->
-	<script src="/js/services/order.js"></script> <!-- load our  service -->
+    <script src="/js/controllers/vieworder.js"></script> <!-- load up our controller -->
 	<script src="/js/core.js"></script> <!-- load our main application -->
 </head>
 <!-- SET THE CONTROLLER AND GET ALL TODOS -->
-<body ng-controller="mainController">
+<body ng-controller="vieworderController">
     <div class="slds-page-header" role="banner">
 	  <div class="slds-media">
 	    <!--<div class="slds-media__figure">
@@ -55,8 +54,9 @@
 	  </div>
 	</div>
 	</div>
-	 <div class="slds-page-header" role="banner">
-  <div class="slds-grid">
+	 <div class="slds-page-header" role="banner" ng-init="orderDetail = <% data %>">
+	 {{orderDetail}}
+  <div class="slds-grid" >
     <div class="slds-col slds-has-flexi-truncate">
       <div class="slds-media">
         <div class="slds-media__figure">
