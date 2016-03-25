@@ -35,46 +35,14 @@
 	      <p class="slds-text-body--small slds-page-header__info">Custom Application</p>
 	    </div>
 	    <div class="slds-dropdown-trigger slds-dropdown-trigger--click slds-is-open" aria-expanded="true">
-	    <button class="slds-button slds-button--icon-border-filled" aria-haspopup="true">
+	    <button class="slds-button slds-button--icon-border-filled" aria-haspopup="true" ng-click="showNavMenu = !showNavMenu">
 	      <svg aria-hidden="true" class="slds-button__icon slds-button__icon--hint">
 	        <use xlink:href="icons/utility-sprite/svg/symbols.svg#settings"></use>
 	      </svg>
 	      <span class="slds-assistive-text">Settings</span>
 	    </button>
-	    <div class="slds-dropdown slds-dropdown--right slds-text-heading--label" style="display:none;">
+	    <div class="slds-dropdown slds-dropdown--right slds-text-heading--label" ng-show="showNavMenu">
 	      <ul class="dropdown__list" role="menu">
-	        <li class="slds-dropdown__item">
-	          <a href="#void" role="menuitem">
-	            <p class="slds-truncate">
-	              <svg aria-hidden="true" class="slds-icon slds-icon--small slds-icon-standard-account slds-m-right--small">
-	                <use xlink:href="/icons/standard-sprite/svg/symbols.svg#account"></use>
-	              </svg>Accounts</p>
-	          </a>
-	        </li>
-	        <li class="slds-dropdown__item">
-	          <a href="#void" role="menuitem">
-	            <p class="slds-truncate">
-	              <svg aria-hidden="true" class="slds-icon slds-icon--small slds-icon-standard-approval slds-m-right--small">
-	                <use xlink:href="/icons/standard-sprite/svg/symbols.svg#approval"></use>
-	              </svg>Approvals</p>
-	          </a>
-	        </li>
-	        <li class="slds-dropdown__item">
-	          <a href="#void" role="menuitem">
-	            <p class="slds-truncate">
-	              <svg aria-hidden="true" class="slds-icon slds-icon--small slds-icon-standard-lead slds-m-right--small">
-	                <use xlink:href="/icons/standard-sprite/svg/symbols.svg#lead"></use>
-	              </svg>Lead</p>
-	          </a>
-	        </li>
-	        <li class="slds-dropdown__item">
-	          <a href="#void" role="menuitem">
-	            <p class="slds-truncate">
-	              <svg aria-hidden="true" class="slds-icon slds-icon--small slds-icon-standard-opportunity slds-m-right--small">
-	                <use xlink:href="/icons/standard-sprite/svg/symbols.svg#opportunity"></use>
-	              </svg>Opportunities</p>
-	          </a>
-	        </li>
 	        <li class="slds-dropdown__item">
 	          <a href="/logout" role="menuitem">
 	            <p class="slds-truncate">

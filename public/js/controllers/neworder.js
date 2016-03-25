@@ -1,6 +1,7 @@
 angular.module('orderController', [])
 
 	.controller('neworderController', ['$scope','$http','$filter','Pricebook','Products','Contracts','OrderItem','Order', function($scope, $http,$filter, Pricebook,Products,Contracts,OrderItem,Order) {
+		$scope.showNavMenu = false;
 		$scope.pricebook = {};
 		$scope.pricebooks = [];
 		$scope.showList = false;

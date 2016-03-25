@@ -3,7 +3,7 @@ angular.module('orderController', [])
 	// inject the Todo service factory into our controller
 	.controller('mainController', ['$scope','$http','Order', function($scope, $http, Order) {
 		$scope.formData = {};
-		$scope.loading = true;
+		$scope.showNavMenu = false;
 
 		// GET =====================================================================
 		// when landing on the page, get all todos and show them
@@ -29,7 +29,6 @@ angular.module('orderController', [])
 					$scope.orders[data[i].ordernumber] = orderDetails;
 				}*/
 				$scope.orders = data;
-				$scope.loading = false;
 			});
 
 		/* CREATE ==================================================================
