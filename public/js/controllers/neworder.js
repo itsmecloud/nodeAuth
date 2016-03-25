@@ -55,7 +55,8 @@ angular.module('orderController', [])
 			for(var i=0;i<$scope.selectedPriceBookEntry.length;i++){
 				$scope.orderItems.push({
 					pricebookentryId : $scope.selectedPriceBookEntry[0].sfid,
-					quantity : $scope.selectedPriceBookEntry[0].quantity
+					quantity : $scope.selectedPriceBookEntry[0].quantity,
+					unitprice : $scope.selectedPriceBookEntry[0].unitprice
 				});
 			}
 			$scope.input.order = $scope.order;
