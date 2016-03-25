@@ -197,7 +197,8 @@
 	                  <th scope="col">Name</th>
 	                  <th scope="col">Quantity</th>
 	                  <th scope="col">Unit Price</th>
-	                  <th scope="col">Description</th>
+	                  <th scope="col">List Price</th>
+					  <th scope="col">Line Description</th>
 	                </tr>
 	              </thead>
 	              <tbody>
@@ -207,7 +208,8 @@
 	                  </td>
 	                  <td><input type="number" value="{{pricebookEntry.quantity}}" ng-model="pricebookEntry.quantity"/></td>
 	                  <td><input type="text" value="{{pricebookEntry.unitprice}}" ng-model="pricebookEntry.unitprice"/></td>
-	                  <td>{{pricebookEntry.listprice}}</td>
+	                  <td>${{pricebookEntry.unitprice}}</td>
+					  <td><input type="text" value="" ng-model="pricebookEntry.description"/></td>
 	                </tr>
 	              </tbody>
 	            </table>
