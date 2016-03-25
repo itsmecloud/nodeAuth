@@ -1,0 +1,160 @@
+<!-- index.html -->
+<!doctype html>
+
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html ng-app="orderApp">
+<head>
+    <!-- META -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+
+    <title>Order Management App</title>
+
+    <!-- SCROLLS -->
+    <link rel="stylesheet" href="/styles/salesforce-lightning-design-system.min.css" >
+    <!-- SPELLS -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><!-- load jquery -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script><!-- load angular -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="/js/controllers/main.js"></script> <!-- load up our controller -->
+	<script src="/js/services/order.js"></script> <!-- load our  service -->
+	<script src="/js/core.js"></script> <!-- load our main application -->
+</head>
+<!-- SET THE CONTROLLER AND GET ALL TODOS -->
+<body ng-controller="mainController">
+    <div class="slds-page-header" role="banner">
+	  <div class="slds-media">
+	    <!--<div class="slds-media__figure">
+	      <svg aria-hidden="true" class="slds-icon slds-icon--large slds-icon-standard-opportunity">
+	        <use xlink:href="/icons/standard-sprite/svg/symbols.svg#opportunity"></use>
+	      </svg>
+	    </div>-->
+	    <div class="slds-media__body">
+	      <p class="slds-page-header__title slds-truncate slds-align-middle" title="Order Management">Order Management</p>
+	      <p class="slds-text-body--small slds-page-header__info">Custom Application</p>
+	    </div>
+	    <div class="slds-dropdown-trigger slds-dropdown-trigger--click slds-is-open" aria-expanded="true" ng-click="showNavMenu = !showNavMenu">
+	    <button class="slds-button slds-button--icon-border-filled" aria-haspopup="true">
+	      <svg aria-hidden="true" class="slds-button__icon slds-button__icon--hint">
+	        <use xlink:href="icons/utility-sprite/svg/symbols.svg#settings"></use>
+	      </svg>
+	      <span class="slds-assistive-text">Settings</span>
+	    </button>
+	    <div class="slds-dropdown slds-dropdown--right slds-text-heading--label" ng-show="showNavMenu">
+	      <ul class="dropdown__list" role="menu">
+	        <li class="slds-dropdown__item">
+	          <a href="/logout" role="menuitem">
+	            <p class="slds-truncate">
+	              <svg aria-hidden="true" class="slds-icon slds-icon--small slds-icon-standard-product slds-m-right--small">
+	                <use xlink:href="icons/standard-sprite/svg/symbols.svg#product"></use>
+	              </svg>Logout</p>
+	          </a>
+	        </li>
+	      </ul>
+	    </div>
+	  </div>
+	</div>
+	</div>
+	 <div class="slds-page-header" role="banner">
+  <div class="slds-grid">
+    <div class="slds-col slds-has-flexi-truncate">
+      <div class="slds-media">
+        <div class="slds-media__figure">
+          <svg aria-hidden="true" class="slds-icon slds-icon--large slds-icon-standard-user">
+            <use xlink:href="/icons/standard-sprite/svg/symbols.svg#user"></use>
+          </svg>
+        </div>
+        <div class="slds-media__body">
+          <p class="slds-text-heading--label">Record Type</p>
+          <div class="slds-grid">
+            <h1 class="slds-page-header__title slds-m-right--small slds-truncate slds-align-middle" title="Record Title">Record Title</h1>
+            <div class="slds-col slds-shrink-none">
+              <button class="slds-button slds-button--neutral slds-not-selected" aria-live="assertive">
+                <span class="slds-text-not-selected">
+                  <svg aria-hidden="true" class="slds-button__icon--stateful slds-button__icon--left">
+                    <use xlink:href="/icons/utility-sprite/svg/symbols.svg#add"></use>
+                  </svg>Follow</span>
+                <span class="slds-text-selected">
+                  <svg aria-hidden="true" class="slds-button__icon--stateful slds-button__icon--left">
+                    <use xlink:href="/icons/utility-sprite/svg/symbols.svg#check"></use>
+                  </svg>Following</span>
+                <span class="slds-text-selected-focus">
+                  <svg aria-hidden="true" class="slds-button__icon--stateful slds-button__icon--left">
+                    <use xlink:href="/icons/utility-sprite/svg/symbols.svg#close"></use>
+                  </svg>Unfollow</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slds-col slds-no-flex slds-align-bottom">
+      <div class="slds-button-group" role="group">
+        <button class="slds-button slds-button--neutral">Edit</button>
+        <button class="slds-button slds-button--neutral">Delete</button>
+        <button class="slds-button slds-button--neutral">Clone</button>
+        <div class="slds-button--last">
+          <button class="slds-button slds-button--icon-border-filled">
+            <svg aria-hidden="true" class="slds-button__icon">
+              <use xlink:href="/icons/utility-sprite/svg/symbols.svg#down"></use>
+            </svg>
+            <span class="slds-assistive-text">More</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slds-grid slds-page-header__detail-row">
+    <div class="slds-col--padded slds-size--1-of-4">
+      <dl>
+        <dt>
+          <p class="slds-text-heading--label slds-truncate" title="Field 1">Field 1</p>
+        </dt>
+        <dd>
+          <p class="slds-text-body--regular slds-truncate" title="Description that demonstrates truncation with a long text field">Description that demonstrates truncation with a long text field</p>
+        </dd>
+      </dl>
+    </div>
+    <div class="slds-col--padded slds-size--1-of-4">
+      <dl>
+        <dt>
+          <p class="slds-text-heading--label slds-truncate" title="Field2 (3)">Field 2 (3)
+            <button class="slds-button slds-button--icon-bare">
+              <svg aria-hidden="true" class="slds-button__icon slds-button__icon--small">
+                <use xlink:href="/icons/utility-sprite/svg/symbols.svg#down"></use>
+              </svg>
+              <span class="slds-assistive-text">More Actions</span>
+            </button>
+          </p>
+        </dt>
+        <dd>
+          <p class="slds-text-body--regular">Multiple Values</p>
+        </dd>
+      </dl>
+    </div>
+    <div class="slds-col--padded slds-size--1-of-4">
+      <dl>
+        <dt>
+          <p class="slds-text-heading--label slds-truncate" title="Field 3">Field 3</p>
+        </dt>
+        <dd>
+          <a href="javascript:void(0)">Hyperlink</a>
+        </dd>
+      </dl>
+    </div>
+    <div class="slds-col--padded slds-size--1-of-4">
+      <dl>
+        <dt>
+          <p class="slds-text-heading--label slds-truncate" title="Field 4">Field 4</p>
+        </dt>
+        <dd>
+          <p>
+            <span>Description (2-line truncat...</span>
+          </p>
+        </dd>
+      </dl>
+    </div>
+  </div>
+</div>
+</body>
+</html>

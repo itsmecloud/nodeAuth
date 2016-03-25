@@ -87,7 +87,7 @@
 	            <th class="row-action" scope="col">
 	              <button class="slds-button slds-button--icon-border-filled slds-button--icon-x-small">
 	                <svg aria-hidden="true" class="slds-button__icon slds-button__icon--hint slds-button__icon--small">
-	                  <use xlink:href="/icons/utility-sprite/svg/symbols.svg#down"></use>
+	                  <use xlink:href="/icons/utility-sprite/svg/symbols.svg#right"></use>
 	                </svg>
 	                <span class="slds-assistive-text">Show More</span>
 	              </button>
@@ -104,12 +104,12 @@
 	            		<span class="slds-badge slds-theme--inverse" ng-repeat="orderItem in order.OrderItems.records">{{orderItem.PricebookEntry.Product2.Name}}</span>
 	            </td>
 	            <td>
-	              <button class="slds-button slds-button--icon-border-filled slds-button--icon-x-small">
+	              <a href="/view/order/{{order.Id}}" class="slds-button slds-button--icon-border-filled slds-button--icon-x-small">
 	                <svg aria-hidden="true" class="slds-button__icon slds-button__icon--hint slds-button__icon--small">
-	                  <use xlink:href="/icons/utility-sprite/svg/symbols.svg#down"></use>
+	                  <use xlink:href="/icons/utility-sprite/svg/symbols.svg#right"></use>
 	                </svg>
 	                <span class="slds-assistive-text">Show More</span>
-	              </button>
+	              </a>
 	            </td>
 	          </tr>
 	        </tbody>

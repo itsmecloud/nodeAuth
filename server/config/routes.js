@@ -87,6 +87,35 @@ module.exports = function(app, passport,db,pgp) {
             return res.status(500).json({ success: false});
         }
     });
+	app.get('/view/order/:orderId', function(req, res) {
+		var orderId = req.params.orderId;
+		if(req.hasOwnProperty('user')){
+			var loginUser = req.user;
+			conn.login(process.env.SF_Username, process.env.SF_PWD, function(err, userInfo) {
+				  if (err) {  return res.redirect('/orders'); }
+				  // Now you can get the access token and instance URL information.
+				var records = [];
+				conn.query("SELECT Id, Status,OrderNumber,TotalAmount,EffectiveDate,(SELECT Id, UnitPrice, Quantity, OrderId,PricebookEntry.Product2.Name FROM OrderItems) FROM Order WHERE Id='"+orderId+" AND AccountId = '"+loginUser.accountid+"'", function(err, result) {
+				if (err) { return res.status(500).json({ success: false,error : err}); }
+					console.log("total : " + result.totalSize);
+					console.log("fetched : " , result.records);
+					console.log("done ? : "+ result.done);
+					records = result.records;
+					if (!result.done) {
+					// you can use the locator to fetch next records set.
+					// Connection#queryMore()
+					console.log("next records URL : " + result.nextRecordsUrl);
+					}
+					res.render('orderdetail.ejs', {
+						user : req.user, // get the user out of session and pass to template
+						data : records 
+					});
+				});
+			});
+		}else{
+			return res.redirect('/orders');
+		}
+	}
     app.get('/api/products/:pbId', function(req, res) {
          var pbId = req.params.pbId;
         if(req.hasOwnProperty('user')){
