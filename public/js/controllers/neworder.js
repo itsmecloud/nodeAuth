@@ -1,6 +1,6 @@
 angular.module('orderController', [])
 
-	.controller('neworderController', ['$scope','$http','Pricebook','Products','Contracts','OrderItem','Order', function($scope, $http, Pricebook,Products,Contracts,OrderItem,Order) {
+	.controller('neworderController', ['$scope','$http','$filter','Pricebook','Products','Contracts','OrderItem','Order', function($scope, $http,$filter, Pricebook,Products,Contracts,OrderItem,Order) {
 		$scope.pricebook = {};
 		$scope.pricebooks = [];
 		$scope.showList = false;
@@ -48,7 +48,9 @@ angular.module('orderController', [])
 				$scope.order.pricebook2Id = $scope.selectedPriceBookEntry[0].pricebook2id;
 				$scope.order.contractId = $scope.contractId;
 			}
-			
+			//item.dateAsString = $filter('date')(item.date, "yyyy-MM-dd");
+			$scope.order.EffectiveDate = new Date();
+			$scope.order.Status = 'Draft';
 			$scope.orderItems =[];
 			for(var i=0;i<$scope.selectedPriceBookEntry.length;i++){
 				$scope.orderItems.push({
