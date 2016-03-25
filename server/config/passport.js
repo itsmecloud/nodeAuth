@@ -16,7 +16,6 @@ module.exports = function(passport,db,pgp) {
 
     // used to serialize the user for the session
     passport.serializeUser(function(user, done) {
-        console.log(user);
 		if(user.length > 0)
 			done(null, user[0].sfid);
 		else
@@ -57,13 +56,13 @@ module.exports = function(passport,db,pgp) {
                     // if there is an error, stop everything and return that
                     // ie an error connecting to the database
                     if (err)
-                        return done(err,false);
+                        return done(null, false, { message: err });
 
                     // if the user is found, then log them in
                     if (!isNotAvailable) {
                         return done(null, user); // user found, return that user
                     } else {
-                        return done(null, false);// user found, return that user
+                        return done(null, false, { message: 'User does not exists' });
                     }
 
                 });
