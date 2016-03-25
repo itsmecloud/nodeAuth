@@ -55,7 +55,7 @@
 	  </div>
 	</div>
 	</div>
-	 <div class="slds-page-header" role="banner" ng-init="orderDetail = <%=data %>">
+	 <div class="slds-page-header" role="banner">
 	 {{orderDetail}}
   <div class="slds-grid" >
     <div class="slds-col slds-has-flexi-truncate">
@@ -66,7 +66,7 @@
           </svg>
         </div>
         <div class="slds-media__body">
-          <p class="slds-text-heading--label">Order </p>
+          <p class="slds-text-heading--label">Order <%=data.OrderNumber %></p>
           <div class="slds-grid">
             <h1 class="slds-page-header__title slds-m-right--small slds-truncate slds-align-middle" title="Record Title">Order</h1>
           </div>
@@ -87,46 +87,37 @@
           <p class="slds-text-heading--label slds-truncate" title="Field 1">Order Number</p>
         </dt>
         <dd>
-          <p class="slds-text-body--regular slds-truncate" title="Description that demonstrates truncation with a long text field">Description that demonstrates truncation with a long text field</p>
+          <p class="slds-text-body--regular slds-truncate" ><%=data.OrderNumber %></p>
+        </dd>
+      </dl>
+    </div>
+    <div class="slds-col--padded slds-size--1-of-4">
+       <dl>
+        <dt>
+          <p class="slds-text-heading--label slds-truncate" title="Field 1">Status</p>
+        </dt>
+        <dd>
+          <p class="slds-text-body--regular slds-truncate" ><%=data.Status %></p>
         </dd>
       </dl>
     </div>
     <div class="slds-col--padded slds-size--1-of-4">
       <dl>
         <dt>
-          <p class="slds-text-heading--label slds-truncate" title="Field2 (3)">Field 2 (3)
-            <button class="slds-button slds-button--icon-bare">
-              <svg aria-hidden="true" class="slds-button__icon slds-button__icon--small">
-                <use xlink:href="/icons/utility-sprite/svg/symbols.svg#down"></use>
-              </svg>
-              <span class="slds-assistive-text">More Actions</span>
-            </button>
-          </p>
+          <p class="slds-text-heading--label slds-truncate" title="Field 1">TotalAmount</p>
         </dt>
         <dd>
-          <p class="slds-text-body--regular">Multiple Values</p>
+          <p class="slds-text-body--regular slds-truncate" ><%=data.TotalAmount %></p>
         </dd>
       </dl>
     </div>
     <div class="slds-col--padded slds-size--1-of-4">
       <dl>
         <dt>
-          <p class="slds-text-heading--label slds-truncate" title="Field 3">Field 3</p>
+          <p class="slds-text-heading--label slds-truncate" title="Field 1">Order Date</p>
         </dt>
         <dd>
-          <a href="javascript:void(0)">Hyperlink</a>
-        </dd>
-      </dl>
-    </div>
-    <div class="slds-col--padded slds-size--1-of-4">
-      <dl>
-        <dt>
-          <p class="slds-text-heading--label slds-truncate" title="Field 4">Field 4</p>
-        </dt>
-        <dd>
-          <p>
-            <span>Description (2-line truncat...</span>
-          </p>
+          <p class="slds-text-body--regular slds-truncate" ><%=data.EffectiveDate %></p>
         </dd>
       </dl>
     </div>
