@@ -20,12 +20,12 @@ module.exports = function(app, passport,db,pgp) {
     });
     //app.get('/api', './routes/api.js');
     // =====================================
-    // PROFILE SECTION =====================
+    // orders SECTION =====================
     // =====================================
     // we will want this protected so you have to be logged in to visit
     // we will use route middleware to verify this (the isLoggedIn function)
-    app.get('/profile', isLoggedIn, function(req, res) {
-        res.render('profile.ejs', {
+    app.get('/orders', isLoggedIn, function(req, res) {
+        res.render('orders.ejs', {
             user : req.user // get the user out of session and pass to template
         });
         console.log(req.user);
@@ -45,7 +45,7 @@ module.exports = function(app, passport,db,pgp) {
     // handle the callback after facebook has authenticated the user
     app.get('/auth/facebook/callback',
         passport.authenticate('facebook', {
-            successRedirect : '/profile',
+            successRedirect : '/orders',
             failureRedirect : '/'
         }));
 
@@ -169,8 +169,8 @@ module.exports = function(app, passport,db,pgp) {
         
             var loginUser = req.user;
             var results = [];
-            console.log(loginUser);
-		db.query("SELECT * FROM salesforce.order INNER JOIN salesforce.orderitem ON salesforce.order.sfid = salesforce.orderitem.orderid INNER JOIN salesforce.pricebookentry ON salesforce.orderitem.pricebookentryid = salesforce.pricebookentry.sfid WHERE accountid ='"+loginUser.accountid+"';", [])
+            console.log(loginUser); 
+		/*db.query("SELECT * FROM salesforce.order INNER JOIN salesforce.orderitem ON salesforce.order.sfid = salesforce.orderitem.orderid INNER JOIN salesforce.pricebookentry ON salesforce.orderitem.pricebookentryid = salesforce.pricebookentry.sfid WHERE accountid ='"+loginUser.accountid+"';", [])
 		    .then(function (data) {
 		        return res.json(data);
 		    })
@@ -189,7 +189,25 @@ module.exports = function(app, passport,db,pgp) {
 		
 		        // See also:
 		        // https://github.com/vitaly-t/pg-promise#library-de-initialization
-		    });
+		    });*/
+				conn.login(process.env.SF_Username, process.env.SF_PWD, function(err, userInfo) {
+				  if (err) { return console.error(err); }
+				  // Now you can get the access token and instance URL information.
+				var records = [];
+				conn.query("SELECT Id, Status,OrderNumber,TotalAmount,EffectiveDate,(SELECT Id, UnitPrice, Quantity, OrderId,PricebookEntry.Product2.Name FROM OrderItems) FROM Order", function(err, result) {
+				if (err) { return res.status(500).json({ success: false,error : err}); }
+					console.log("total : " + result.totalSize);
+					console.log("fetched : " , result.records);
+					console.log("done ? : "+ result.done);
+					records = result.records;
+					if (!result.done) {
+					// you can use the locator to fetch next records set.
+					// Connection#queryMore()
+					console.log("next records URL : " + result.nextRecordsUrl);
+					}
+					return res.json(records);
+				});
+			});
 
         }else{
             return res.status(500).json({ success: false});

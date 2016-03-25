@@ -10,8 +10,8 @@ angular.module('orderController', [])
 		// use the service to get all the todos
 		Order.get()
 			.success(function(data) {
-				$scope.orders = {};
-				for(var i=0;i< data.length;i++){
+				$scope.orders = [];
+				/*for(var i=0;i< data.length;i++){
 					
 					var orderItem = [];
 					if($scope.orders.hasOwnProperty(data[i].ordernumber)){
@@ -27,8 +27,8 @@ angular.module('orderController', [])
 						orderItem : orderItem
 					}
 					$scope.orders[data[i].ordernumber] = orderDetails;
-				}
-				
+				}*/
+				$scope.orders = data;
 				$scope.loading = false;
 			});
 
