@@ -36,7 +36,7 @@
 	    <div class="slds-dropdown-trigger slds-dropdown-trigger--click slds-is-open" aria-expanded="true" ng-click="showNavMenu = !showNavMenu">
 	    <button class="slds-button slds-button--icon-border-filled" aria-haspopup="true">
 	      <svg aria-hidden="true" class="slds-button__icon slds-button__icon--hint">
-	        <use xlink:href="../icons/utility-sprite/svg/symbols.svg#settings"></use>
+	        <use xlink:href="/icons/utility-sprite/svg/symbols.svg#settings"></use>
 	      </svg>
 	      <span class="slds-assistive-text">Settings</span>
 	    </button>
@@ -46,7 +46,7 @@
 	          <a href="/logout" role="menuitem">
 	            <p class="slds-truncate">
 	              <svg aria-hidden="true" class="slds-icon slds-icon--small slds-icon-standard-product slds-m-right--small">
-	                <use xlink:href="../icons/standard-sprite/svg/symbols.svg#product"></use>
+	                <use xlink:href="/icons/standard-sprite/svg/symbols.svg#product"></use>
 	              </svg>Logout</p>
 	          </a>
 	        </li>
@@ -61,7 +61,7 @@
       <div class="slds-media">
         <div class="slds-media__figure">
           <svg aria-hidden="true" class="slds-icon slds-icon--large slds-icon-standard-user">
-            <use xlink:href="../icons/standard-sprite/svg/symbols.svg#user"></use>
+            <use xlink:href="/icons/standard-sprite/svg/symbols.svg#user"></use>
           </svg>
         </div>
         <div class="slds-media__body">
@@ -133,6 +133,12 @@
 	<% for(var i=0; i<data.OrderItems.records.length; i++) {%>	
 		<li class="slds-list__item">
 		  <div class="slds-tile slds-tile--board">
+		  <span class="slds-icon_container slds-icon-standard-case">
+			  <svg aria-hidden="true" class="slds-icon">
+				<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/icons/standard-sprite/svg/symbols.svg#case"></use>
+			  </svg>
+			  <span class="slds-assistive-text">Case icon</span>
+			</span>
 			<p class="slds-tile__title slds-truncate">
 			  <a href="javascript:void(0)"><%=data.OrderItems.records[i].PricebookEntry.Product2.Name %></a>
 			</p>
