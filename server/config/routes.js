@@ -1,9 +1,14 @@
 var jsforce = require('jsforce');
+
 // Salesforce OAuth2 client information
-var oauth2 = new jsforce.OAuth2({
+var conn = new jsforce.Connection({
+  oauth2 : {
+    // you can change loginUrl to connect to sandbox or prerelease env.
+    loginUrl : 'https://test.salesforce.com',
     clientId: process.env.Consumer_Key,
     clientSecret:  process.env.Consumer_Secret,
     redirectUri: process.env.Callback_URL,
+  }
 });
 //all the routes for our application
 module.exports = function(app, passport,db,pgp) {
@@ -13,28 +18,6 @@ module.exports = function(app, passport,db,pgp) {
     app.get('/', function(req, res) {
         res.render('index.ejs'); // load the index.ejs file
     });
-    /* SF OAuth request, redirect to SF login */
-	app.get('/oauth/auth', function(req, res) {
-		res.redirect(oauth2.getAuthorizationUrl({scope: 'api id web'}));
-	});
-
-	/* OAuth callback from SF, pass received auth code and get access token */
-	app.get('/oauth/callback', function(req, res) {
-		var conn = new jsforce.Connection({oauth2: oauth2});
-		var code = req.query.code;
-		conn.authorize(code, function(err, userInfo) {
-			if (err) { return console.error(err); }
-
-			console.log('Access Token: ' + conn.accessToken);
-			console.log('Instance URL: ' + conn.instanceUrl);
-			console.log('User ID: ' + userInfo.id);
-			console.log('Org ID: ' + userInfo.organizationId);
-
-			req.session.accessToken = conn.accessToken;
-			req.session.instanceUrl = conn.instanceUrl;
-			res.redirect('/profile');
-		});
-	});
     //app.get('/api', './routes/api.js');
     // =====================================
     // PROFILE SECTION =====================
@@ -145,8 +128,15 @@ module.exports = function(app, passport,db,pgp) {
 			var order = data.order;
 			var orderItems = data.orderItems;
 			order.AccountId = loginUser.accountId;
-			conn.login('ramesh.k@sfdc.com.dev', '$KS726kosalOekYFPP14TK9OozmHLNcIYsz', function(err, res) {
+			conn.login('rkosalairama@csc.com.retaildev', '$KS726kosal', function(err, userInfo) {
 			  if (err) { return console.error(err); }
+			  // Now you can get the access token and instance URL information.
+			  // Save them to establish connection next time.
+			  console.log(conn.accessToken);
+			  console.log(conn.instanceUrl);
+			  // logged in user property
+			  console.log("User ID: " + userInfo.id);
+			  console.log("Org ID: " + userInfo.organizationId);
 			  // Single record creation
 				conn.sobject("Order").create(order, function(err, ret) {
 				  if (err || !ret.success) { return console.error(err, ret); }
@@ -167,7 +157,6 @@ module.exports = function(app, passport,db,pgp) {
 					});
 				});
 			});
-              
         }else{
             return res.status(500).json({ success: false});
         }
