@@ -1,6 +1,6 @@
 angular.module('orderController', [])
 
-	.controller('neworderController', ['$scope','$http','$filter','Pricebook','Products','Contracts','OrderItem','Order', function($scope, $http,$filter, Pricebook,Products,Contracts,OrderItem,Order) {
+	.controller('neworderController', ['$scope','$http','$filter','Pricebook','Products','OrderItem','Order', function($scope, $http,$filter, Pricebook,Products,OrderItem,Order) {
 		$scope.showNavMenu = false;
 		$scope.pricebook = {};
 		$scope.pricebooks = [];
@@ -8,14 +8,9 @@ angular.module('orderController', [])
 		$scope.selected = false;
 		$scope.productSelected = false;
 		$scope.selectedPriceBookEntry = [];
-		$scope.contractId = undefined;
 		Pricebook.get()
 		.success(function(data) {
 			$scope.pricebooks = data;
-		});
-		Contracts.get()
-		.success(function(data) {
-			$scope.contractId = data.sfid;
 		});
 		$scope.products = [];
 		$scope.onPricebookSelect =function(pb){
@@ -47,7 +42,6 @@ angular.module('orderController', [])
 		   	$scope.order = {};
 			if($scope.selectedPriceBookEntry.length > 0){
 				$scope.order.pricebook2Id = $scope.selectedPriceBookEntry[0].pricebook2id;
-				$scope.order.contractId = $scope.contractId;
 			}
 			//item.dateAsString = $filter('date')(item.date, "yyyy-MM-dd");
 			$scope.order.EffectiveDate = new Date();

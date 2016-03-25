@@ -57,7 +57,7 @@ module.exports = function(app, passport,db,pgp) {
         req.logout();
         res.redirect('/');
     });
-    app.get('/api/contracts', function(req, res) {
+    /*app.get('/api/contracts', function(req, res) {
         if(req.hasOwnProperty('user')){
             var loginUser = req.user;
             var results = [];
@@ -87,6 +87,7 @@ module.exports = function(app, passport,db,pgp) {
             return res.status(500).json({ success: false});
         }
     });
+	*/
 	app.get('/view/order/:orderId', function(req, res) {
 		var orderId = req.params.orderId;
 		if(req.hasOwnProperty('user')){

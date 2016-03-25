@@ -144,6 +144,7 @@
 		  <table class="slds-table slds-table--bordered slds-max-medium-table--stacked-horizontal slds-no-row-hover">
 			<thead>
 			  <tr>
+				<th class="slds-text-heading--label slds-size--1-of-4" scope="col">Action</th>
 				<th class="slds-text-heading--label slds-size--1-of-4" scope="col">Name</th>
 				<th class="slds-text-heading--label slds-size--1-of-4" scope="col">Description</th>
 				<th class="slds-text-heading--label slds-size--1-of-4" scope="col">Quantity</th>
@@ -153,6 +154,12 @@
 			<tbody>
 			<% for(var i=0; i<data.OrderItems.records.length; i++) {%>	
 			  <tr class="slds-hint-parent">
+				<td class="slds-size--1-of-4">
+					<div class="slds-button-group" role="group">
+						<button class="slds-button slds-button--neutral">Edit</button>
+						<button class="slds-button slds-button--neutral">Del</button>
+					</div>
+				</td>
 				<td class="slds-size--1-of-4" ><%=data.OrderItems.records[i].PricebookEntry.Product2.Name %></td>
 				<td class="slds-size--1-of-4" ><%=data.OrderItems.records[i].Description %></td>
 				<td class="slds-size--1-of-4" ><%=data.OrderItems.records[i].Quantity %></td>

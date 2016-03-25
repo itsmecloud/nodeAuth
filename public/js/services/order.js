@@ -17,13 +17,13 @@ angular.module('orderService', [])
 				return $http.post('/api/orderitem',JSON.stringify(data));
 			}
 		}
-	}]).factory('Contracts', ['$http',function($http) {
+	}])/*.factory('Contracts', ['$http',function($http) {
 		return {
 			get : function() {
 				return $http.get('/api/contracts');
 			}
 		}
-	}])
+	}])*/
 	.factory('Pricebook', ['$http',function($http) {
 		return {
 			get : function() {
