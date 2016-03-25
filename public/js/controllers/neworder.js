@@ -58,7 +58,7 @@ angular.module('orderController', [])
 					pricebookentryId : $scope.selectedPriceBookEntry[0].sfid,
 					quantity : $scope.selectedPriceBookEntry[0].quantity,
 					unitprice : $scope.selectedPriceBookEntry[0].unitprice,
-					description : $scope.selectedPriceBookEntry[0].description
+					Description : $scope.selectedPriceBookEntry[0].description
 				});
 			}
 			$scope.input.order = $scope.order;
