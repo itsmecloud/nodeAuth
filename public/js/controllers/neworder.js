@@ -1,6 +1,6 @@
 angular.module('orderController', [])
 
-	.controller('neworderController', ['$scope','$http','$filter','Pricebook','Products','OrderItem','Order', function($scope, $http,$filter, Pricebook,Products,OrderItem,Order) {
+	.controller('neworderController', ['$scope','$http','$filter','Pricebook','Products','OrderItem','Order','$location', function($scope, $http,$filter, Pricebook,Products,OrderItem,Order,$location) {
 		$scope.showNavMenu = false;
 		$scope.pricebook = {};
 		$scope.pricebooks = [];
@@ -57,6 +57,8 @@ angular.module('orderController', [])
 			}
 			$scope.input.order = $scope.order;
 			$scope.input.orderItems = $scope.orderItems;
-			OrderItem.post($scope.input);
+			OrderItem.post($scope.input).success(function(data) {
+					$location.path('/orders');
+			});		
 		}
 	}]);
