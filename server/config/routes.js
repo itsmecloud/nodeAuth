@@ -231,7 +231,7 @@ module.exports = function(app, passport,db,pgp) {
 				  if (err) { return console.error(err); }
 				  // Now you can get the access token and instance URL information.
 				var records = [];
-				conn.query("SELECT Id, Status,OrderNumber,TotalAmount,EffectiveDate,(SELECT Id, UnitPrice, Quantity, OrderId,PricebookEntry.Product2.Name FROM OrderItems) FROM Order", function(err, result) {
+				conn.query("SELECT Id, Status,OrderNumber,TotalAmount,EffectiveDate,(SELECT Id, UnitPrice, Quantity, OrderId,PricebookEntry.Product2.Name FROM OrderItems) FROM Order WHERE AcccountId ='"+loginUser.accountid+"'", function(err, result) {
 				if (err) { return res.status(500).json({ success: false,error : err}); }
 					console.log("total : " + result.totalSize);
 					console.log("fetched : " , result.records);
