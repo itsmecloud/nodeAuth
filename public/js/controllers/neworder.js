@@ -58,7 +58,7 @@ angular.module('orderController', [])
 			$scope.input.order = $scope.order;
 			$scope.input.orderItems = $scope.orderItems;
 			OrderItem.post($scope.input).success(function(data) {
-				$location.url('/orders');
+				window.location="/orders";
 			});		
 		}
 	}]);
