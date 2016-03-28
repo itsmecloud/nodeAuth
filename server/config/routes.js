@@ -166,7 +166,7 @@ module.exports = function(app, passport,db,pgp) {
 			var orderItems = data.orderItems;
 			order.AccountId = loginUser.accountid;
 			conn.login(process.env.SF_Username, process.env.SF_PWD, function(err, userInfo) {
-			  if (err) { return console.error(err); }
+			  if (err) { return res.status(500).json({ success: false,err:err}); }
 			  // Now you can get the access token and instance URL information.
 			  // Save them to establish connection next time.
 			  console.log(conn.accessToken);
@@ -177,21 +177,21 @@ module.exports = function(app, passport,db,pgp) {
 			  // Single record creation
 			  console.log("Order Id",order);
 				conn.sobject("Order").create(order, function(err, ret) {
-				  if (err || !ret.success) { return console.error(err, ret); }
+				  if (err || !ret.success) { return res.status(500).json({ success: false,err:err,ret:ret}); }
 				  console.log("Created record id : " + ret.id);
-				  // Multiple records creation
-				  for(var i=0;i<orderItems.length;i++){
-					  orderItems[i].orderId = ret.id;
-				  }
+					  // Multiple records creation
+					  for(var i=0;i<orderItems.length;i++){
+						  orderItems[i].orderId = ret.id;
+					  }
 					conn.sobject("OrderItem").create(orderItems,
 					function(err, rets) {
-					  if (err) { return console.error(err); }
+					  if (err) { return res.status(500).json({ success: false,err:err,ret:rets}); }
 					  for (var i=0; i < rets.length; i++) {
 						if (rets[i].success) {
 						  console.log("Created record id : " + rets[i].id);
 						}
 					  }
-					  // ...
+					  return res.json({ success: true,err:err,ret:rets});
 					});
 				});
 			});
